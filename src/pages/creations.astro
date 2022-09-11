@@ -1,0 +1,52 @@
+---
+import Project from "../components/Project.astro";
+import Nav from "../components/Nav.astro";
+import Head from "../components/Head.astro";
+---
+
+<html>
+  <Head title="Ibrahim Hisham~" />
+  <body class="bg-gray-900">
+    <main>
+      <div
+        class="flex min-h-full items-center justify-center py-48 px-4 sm:px-6 lg:px-8"
+      >
+        <div class="w-full max-w-md px-6 py-6 rounded">
+          <Nav />
+          <h1
+            class="text-slate-200 antialised font-bold font-space text-2xl leading-snug"
+          >
+            Creations
+          </h1>
+          <h2 class="text-slate-400 font-mono antialised text-base mb-5">
+            here are a few things i've made:
+          </h2>
+          <div
+            class="grid grid-flow-row auto-rows-max text-slate-400 font-mono antialised text-base"
+          >
+            <Project
+              title="Ibralogue"
+              description="A dialogue library for the unity game engine written in C#."
+              url="https://github.com/Ibralogue/Ibralogue"
+            />
+            <Project
+              title="snip.place"
+              description="A modern, minimalistic pastebin, which I wrote the backend for in Rust."
+              url="https://snip.place"
+            />
+            <Project
+              title="A Gambler's Gambit"
+              description="A game created in 48 hours for the GMTK Game Jam 2022 placing top 900s out of over 6000 entries."
+              url="https://ibrahh.itch.io/gamblers-gambit"
+            />
+            <Project
+              title="OneShot"
+              description="A top-down shooter released on Steam developed within the span of ~8 months."
+              url="https://snip.place"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
