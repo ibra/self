@@ -1,20 +1,19 @@
 ---
 import Nav from "@components/Nav.astro"
-import Head from "@components/Head.astro"
 import Layout from "@components/Layout.astro"
 ---
 
-<Layout title="Ibrahim Hisham ~  Me" padding="48">
+<Layout title="Ibrahim Hisham ~  Me" padding="48" path="me">
   <main>
     <div class="w-full max-w-md px-6 py-6 rounded-md">
       <Nav />
       <h1
-        class="text-slate-200 antialised font-bold font-space text-2xl mb-2 animate-fade stagger-50"
+        class="text-slate-200 antialised font-bold text-2xl mb-2 animate-fade stagger-50"
       >
         Links
       </h1>
       <ul
-        class="text-slate-400 font-space antialised text-base mb-5 animate-fade stagger-100"
+        class="text-slate-400 antialised text-base mb-5 animate-fade stagger-100"
       >
         <li>
           Email: <a
@@ -47,10 +46,15 @@ import Layout from "@components/Layout.astro"
           >
         </li>
       </ul>
-      <h1 class="antialised font-bold text-2xl mb-2 animate-fade stagger-150">
+      <h2 class="antialised font-bold text-2xl my-5 animate-fade stagger-150">
         A Little About Me
-      </h1>
-      <a href="/images/smol_ibra.jpg" target="_blank">
+      </h2>
+      <a
+        href="/images/smol_ibra.jpg"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="An image of me"
+      >
         <img
           class="float-left mr-5 animate-fade stagger-200"
           src="/images/smol_ibra.jpg"
@@ -58,9 +62,7 @@ import Layout from "@components/Layout.astro"
           width="25%"
         />
       </a>
-      <div
-        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5"
-      >
+      <div class="text-slate-400 antialised text-base leading-relaxed mb-5">
         <p class="animate-fade stagger-250">
           I'm a 15 year old programmer and hobbyist indie game developer from
           Pakistan. <br />
@@ -79,18 +81,18 @@ import Layout from "@components/Layout.astro"
           web development with Typescript.
         </p>
       </div>
-      <h1
-        class="text-slate-200 antialised font-bold font-space text-2xl mb-2 animate-fade stagger-400"
+      <h2
+        class="text-slate-200 antialised font-bold text-2xl my-5 animate-fade stagger-400"
       >
         Stuff I Use
-      </h1>
+      </h2>
       <h3
-        class="text-slate-200 antialised font-bold font-space text-xl animate-fade stagger-450"
+        class="text-slate-200 antialised font-bold text-xl animate-fade stagger-450"
       >
         PC
       </h3>
       <ul
-        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-450"
+        class="text-slate-400 antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-450"
       >
         <li>AMD Ryzen 5 2600x</li>
         <li>GTX 1660</li>
@@ -99,12 +101,12 @@ import Layout from "@components/Layout.astro"
         <li>256GB SSD & 1TB HDD</li>
       </ul>
       <h3
-        class="text-slate-200 antialised font-bold font-space text-xl animate-fade stagger-500"
+        class="text-slate-200 antialised font-bold text-xl animate-fade stagger-500"
       >
         Programming Languages
       </h3>
       <ul
-        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-500"
+        class="text-slate-400 antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-500"
       >
         <li>Rust</li>
         <li>C#</li>
@@ -113,12 +115,12 @@ import Layout from "@components/Layout.astro"
         <li>Go</li>
       </ul>
       <h3
-        class="text-slate-200 antialised font-bold font-space text-xl animate-fade stagger-550"
+        class="text-slate-200 antialised font-bold text-xl animate-fade stagger-550"
       >
         Software
       </h3>
       <ul
-        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-550"
+        class="text-slate-400 antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-550"
       >
         <li>Obsidian</li>
         <li>Unity</li>

@@ -4,7 +4,7 @@ import Nav from "@components/Nav.astro"
 import Layout from "@components/Layout.astro"
 ---
 
-<Layout title="Ibrahim Hisham ~ Creations" padding="48">
+<Layout title="Ibrahim Hisham ~ Creations" padding="48" path="/creations">
   <main>
     <div class="w-full max-w-md px-6 py-6 rounded-md">
       <Nav />
@@ -16,8 +16,8 @@ import Layout from "@components/Layout.astro"
       <h2 class="stagger-100 animate-fade mb-5">
         here are a few things i've made:
       </h2>
-      <div
-        class="grid grid-flow-row auto-rows-max text-slate-400 font-mono antialised text-base"
+      <ul
+        class="grid grid-flow-row auto-rows-max text-slate-400 antialised text-base"
       >
         <DetailModal
           title="Ibralogue"
@@ -43,7 +43,7 @@ import Layout from "@components/Layout.astro"
           url="https://store.steampowered.com/app/1221330/One_Shot"
           delay="300"
         />
-      </div>
+      </ul>
     </div>
   </main>
 </Layout>
