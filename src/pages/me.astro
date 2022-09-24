@@ -1,132 +1,131 @@
 ---
-import Nav from "@components/Nav.astro";
-import Head from "@components/Head.astro";
+import Nav from "@components/Nav.astro"
+import Head from "@components/Head.astro"
+import Layout from "@components/Layout.astro"
 ---
 
-<html>
-  <Head title="Ibrahim Hisham ~  Me" />
-  <body class="bg-gray-900">
-    <main>
-      <div
-        class="flex min-h-full items-center justify-center py-48 px-4 sm:px-6 lg:px-8"
+<Layout title="Ibrahim Hisham ~  Me" padding="48">
+  <main>
+    <div class="w-full max-w-md px-6 py-6 rounded-md">
+      <Nav />
+      <h1
+        class="text-slate-200 antialised font-bold font-space text-2xl mb-2 animate-fade stagger-50"
       >
-        <div class="w-full max-w-md px-6 py-6 rounded-md">
-          <Nav />
-          <h1
-            class="text-slate-200 antialised font-bold font-space text-2xl mb-2"
+        Links
+      </h1>
+      <ul
+        class="text-slate-400 font-space antialised text-base mb-5 animate-fade stagger-100"
+      >
+        <li>
+          Email: <a
+            href="mailto:hi.ibra@pm.me"
+            class="text-slate-200 hover:text-slate-400">hi.ibra@pm.me</a
           >
-            Links
-          </h1>
-          <h2 class="text-slate-400 font-mono antialised text-base mb-5">
-            <ul>
-              <li>
-                Email: <a
-                  href="mailto:hi.ibra@pm.me"
-                  class="text-slate-200 hover:text-slate-400">hi.ibra@pm.me</a
-                >
-              </li>
-              <li>
-                Github: <a
-                  href="https://github.com/ibra"
-                  class="text-slate-200 hover:text-slate-400">/ibra</a
-                >
-              </li>
-              <li>
-                Linkedin: <a
-                  href="https://linkedin.com/in/ibrahh"
-                  class="text-slate-50 hover:text-slate-400">/ibrahh</a
-                >
-              </li>
-              <li>
-                Twitter: <a
-                  href="https://twitter.com/IbrahDev"
-                  class="text-slate-50 hover:text-slate-400">/IbrahDev</a
-                >
-              </li>
-              <li>
-                Itch: <a
-                  href="https://ibrahh.itch.io"
-                  class="text-slate-200 hover:text-slate-400">/ibrahh</a
-                >
-              </li>
-            </ul>
-          </h2>
-          <h1
-            class="text-slate-200 antialised font-bold font-space text-2xl mb-2"
+        </li>
+        <li>
+          Github: <a
+            href="https://github.com/ibra"
+            class="text-slate-200 hover:text-slate-400">/ibra</a
           >
-            A Little About Me
-          </h1>
-          <a href="/images/smol_ibra.jpg" target="_blank">
-            <img
-              class="float-left mr-5"
-              src="/images/smol_ibra.jpg"
-              width="25%"
-            />
-          </a>
-          <div
-            class="text-slate-400 font-mono antialised text-base leading-relaxed mb-5"
+        </li>
+        <li>
+          Linkedin: <a
+            href="https://linkedin.com/in/ibrahh"
+            class="text-slate-50 hover:text-slate-400">/ibrahh</a
           >
-            <p>
-              I'm a 15 year old programmer and hobbyist indie game developer
-              from Pakistan. <br />
-              <br />
-            </p>
-            <p>
-              I started programming when I was 9, starting with HTML and
-              Scratch. Later I moved on to making games with C# and Unity when I
-              was 11. Took part in a couple of game jams, and eventually
-              released a commercial game on Steam.
-            </p>
-            <br />
-            <p>
-              Later on, I fell in love with Rust and especially the web and game
-              development ecosystem surrounding it, and also dabbled some more
-              in web development with Typescript.
-            </p>
-          </div>
-          <h1
-            class="text-slate-200 antialised font-bold font-space text-2xl mb-2"
+        </li>
+        <li>
+          Twitter: <a
+            href="https://twitter.com/IbrahDev"
+            class="text-slate-50 hover:text-slate-400">/IbrahDev</a
           >
-            Stuff I Use
-          </h1>
-          <h3 class="text-slate-200 antialised font-bold font-space text-xl">
-            PC
-          </h3>
-          <ul
-            class="text-slate-400 font-mono antialised text-base leading-relaxed mb-5 list-disc"
+        </li>
+        <li>
+          Itch: <a
+            href="https://ibrahh.itch.io"
+            class="text-slate-200 hover:text-slate-400">/ibrahh</a
           >
-            <li>AMD Ryzen 5 2600x</li>
-            <li>GTX 1660</li>
-            <li>16GB DDR4 RAM</li>
-            <li>Windows 10</li>
-            <li>256GB SSD & 1TB HDD</li>
-          </ul>
-          <h3 class="text-slate-200 antialised font-bold font-space text-xl">
-            Programming Languages
-          </h3>
-          <ul
-            class="text-slate-400 font-mono antialised text-base leading-relaxed mb-5 list-disc"
-          >
-            <li>Rust</li>
-            <li>C#</li>
-            <li>TypeScript</li>
-            <li>Python</li>
-            <li>Go</li>
-          </ul>
-          <h3 class="text-slate-200 antialised font-bold font-space text-xl">
-            Software
-          </h3>
-          <ul
-            class="text-slate-400 font-mono antialised text-base leading-relaxed mb-5 list-disc"
-          >
-            <li>Obsidian</li>
-            <li>Unity</li>
-            <li>Visual Studio Code, Jetbrains Rider</li>
-            <li>Adobe Premiere Pro</li>
-            <li>Termux</li>
-          </ul>
-        </div>
+        </li>
+      </ul>
+      <h1 class="antialised font-bold text-2xl mb-2 animate-fade stagger-150">
+        A Little About Me
+      </h1>
+      <a href="/images/smol_ibra.jpg" target="_blank">
+        <img
+          class="float-left mr-5 animate-fade stagger-200"
+          src="/images/smol_ibra.jpg"
+          alt="Picture of me"
+          width="25%"
+        />
+      </a>
+      <div
+        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5"
+      >
+        <p class="animate-fade stagger-250">
+          I'm a 15 year old programmer and hobbyist indie game developer from
+          Pakistan. <br />
+          <br />
+        </p>
+        <p class="animate-fade stagger-300">
+          I started programming when I was 9, starting with HTML and Scratch.
+          Later I moved on to making games with C# and Unity when I was 11. Took
+          part in a couple of game jams, and eventually released a commercial
+          game on Steam.
+        </p>
+        <br />
+        <p class="animate-fade stagger-350">
+          Later on, I fell in love with Rust and especially the web and game
+          development ecosystem surrounding it, and also dabbled some more in
+          web development with Typescript.
+        </p>
       </div>
-    </main>
-  </body>
-</html>
+      <h1
+        class="text-slate-200 antialised font-bold font-space text-2xl mb-2 animate-fade stagger-400"
+      >
+        Stuff I Use
+      </h1>
+      <h3
+        class="text-slate-200 antialised font-bold font-space text-xl animate-fade stagger-450"
+      >
+        PC
+      </h3>
+      <ul
+        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-450"
+      >
+        <li>AMD Ryzen 5 2600x</li>
+        <li>GTX 1660</li>
+        <li>16GB DDR4 RAM</li>
+        <li>Windows 10</li>
+        <li>256GB SSD & 1TB HDD</li>
+      </ul>
+      <h3
+        class="text-slate-200 antialised font-bold font-space text-xl animate-fade stagger-500"
+      >
+        Programming Languages
+      </h3>
+      <ul
+        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-500"
+      >
+        <li>Rust</li>
+        <li>C#</li>
+        <li>TypeScript</li>
+        <li>Python</li>
+        <li>Go</li>
+      </ul>
+      <h3
+        class="text-slate-200 antialised font-bold font-space text-xl animate-fade stagger-550"
+      >
+        Software
+      </h3>
+      <ul
+        class="text-slate-400 font-space antialised text-base leading-relaxed mb-5 list-disc animate-fade stagger-550"
+      >
+        <li>Obsidian</li>
+        <li>Unity</li>
+        <li>Visual Studio Code, Jetbrains Rider</li>
+        <li>Adobe Premiere Pro</li>
+        <li>Termux</li>
+      </ul>
+    </div>
+  </main>
+</Layout>

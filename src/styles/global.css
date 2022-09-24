@@ -1,0 +1,79 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply font-space;
+}
+
+p {
+  @apply text-slate-400 text-base antialiased;
+}
+
+nav a {
+  @apply text-slate-200 hover:text-slate-400 transition-colors;
+}
+
+nav span {
+  @apply w-[5px] h-[5px] bg-slate-400 rounded-full mx-2;
+}
+
+::-moz-selection {
+  color: #fff;
+  background: #ffffff1c;
+}
+
+::selection {
+  color: #fff;
+  background: #ffffff1c;
+}
+
+.stagger-50 {
+  animation-delay: 50ms;
+}
+
+.stagger-100 {
+  animation-delay: 100ms;
+}
+
+.stagger-150 {
+  animation-delay: 150ms;
+}
+
+.stagger-200 {
+  animation-delay: 200ms;
+}
+
+.stagger-250 {
+  animation-delay: 250ms;
+}
+
+.stagger-300 {
+  animation-delay: 300ms;
+}
+
+.stagger-350 {
+  animation-delay: 350ms;
+}
+
+.stagger-400 {
+  animation-delay: 400ms;
+}
+
+.stagger-450 {
+  animation-delay: 450ms;
+}
+
+.stagger-500 {
+  animation-delay: 500ms;
+}
+
+.stagger-550 {
+  animation-delay: 550ms;
+}
