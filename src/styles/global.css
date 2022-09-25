@@ -41,6 +41,11 @@ ul {
   padding-bottom: 12rem;
 }
 
+.py-64 {
+  padding-top: 16rem;
+  padding-bottom: 16rem;
+}
+
 .blur {
   user-select: none;
   pointer-events: none;
