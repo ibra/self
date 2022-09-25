@@ -1,52 +1,49 @@
 ---
-import DetailModal from "@components/DetailModal.astro";
-import Nav from "@components/Nav.astro";
-import Head from "@components/Head.astro";
+import DetailModal from "@components/DetailModal.astro"
+import Nav from "@components/Nav.astro"
+import Layout from "@components/Layout.astro"
 ---
 
-<html>
-  <Head title="Ibrahim Hisham ~ Creations" />
-  <body class="bg-gray-900">
-    <main>
-      <div
-        class="flex min-h-full items-center justify-center py-48 px-4 sm:px-6 lg:px-8"
+<Layout title="Ibrahim Hisham ~ Creations" padding="48" path="/creations">
+  <main>
+    <div class="w-full max-w-md px-6 py-6 rounded-md">
+      <Nav />
+      <h1
+        class="animate-fade antialised font-bold text-2xl my-4 leading-snug stagger-50"
       >
-        <div class="w-full max-w-md px-6 py-6 rounded-md">
-          <Nav />
-          <h1
-            class="text-slate-200 antialised font-bold font-space text-2xl leading-snug"
-          >
-            Creations
-          </h1>
-          <h2 class="text-slate-400 font-mono antialised text-base mb-5">
-            here are a few things i've made:
-          </h2>
-          <div
-            class="grid grid-flow-row auto-rows-max text-slate-400 font-mono antialised text-base"
-          >
-            <DetailModal
-              title="Ibralogue"
-              description="A dialogue library for the unity game engine written in C#."
-              url="https://github.com/Ibralogue/Ibralogue"
-            />
-            <DetailModal
-              title="snip.place"
-              description="A modern, minimalistic pastebin, which I wrote the backend for in Rust."
-              url="https://snip.place"
-            />
-            <DetailModal
-              title="A Gambler's Gambit"
-              description="A game created in 48 hours for the GMTK Game Jam 2022 placing top 900s out of over 6000 entries."
-              url="https://ibrahh.itch.io/gamblers-gambit"
-            />
-            <DetailModal
-              title="OneShot"
-              description="A top-down shooter released on Steam developed within the span of ~8 months."
-              url="https://store.steampowered.com/app/1221330/One_Shot"
-            />
-          </div>
-        </div>
-      </div>
-    </main>
-  </body>
-</html>
+        Creations
+      </h1>
+      <h2 class="stagger-100 animate-fade mb-5">
+        here are a few things i've made:
+      </h2>
+      <ul
+        class="grid grid-flow-row auto-rows-max text-slate-400 antialised text-base"
+      >
+        <DetailModal
+          title="Ibralogue"
+          description="A dialogue library for the unity game engine written in C#."
+          url="https://github.com/Ibralogue/Ibralogue"
+          delay="150"
+        />
+        <DetailModal
+          title="snip.place"
+          description="A modern, minimalistic pastebin, which I wrote the backend for in Rust."
+          url="https://snip.place"
+          delay="200"
+        />
+        <DetailModal
+          title="A Gambler's Gambit"
+          description="A game created in 48 hours for the GMTK Game Jam 2022 placing top 900s out of over 6000 entries."
+          url="https://ibrahh.itch.io/gamblers-gambit"
+          delay="250"
+        />
+        <DetailModal
+          title="OneShot"
+          description="A top-down shooter released on Steam developed within the span of ~8 months."
+          url="https://store.steampowered.com/app/1221330/One_Shot"
+          delay="300"
+        />
+      </ul>
+    </div>
+  </main>
+</Layout>
