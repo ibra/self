@@ -2,10 +2,11 @@
 import DetailModal from "@components/DetailModal.astro";
 import Nav from "@components/Nav.astro";
 import Layout from "@components/Layout.astro";
+import Container from "@components/Container.astro";
 ---
 
 <Layout title="Ibrahim Hisham ~ Creations" padding="48" path="/creations">
-  <div class="w-full max-w-md px-6 py-6 rounded-md">
+  <Container>
     <Nav />
     <h1
       class="animate-fade antialised font-bold text-2xl my-4 leading-snug stagger-50"
@@ -43,5 +44,5 @@ import Layout from "@components/Layout.astro";
         delay="300"
       />
     </ul>
-  </div>
+  </Container>
 </Layout>
