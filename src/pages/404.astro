@@ -1,10 +1,11 @@
 ---
 import Nav from "@components/Nav.astro";
 import Layout from "@components/Layout.astro";
+import Container from "@components/Container.astro";
 ---
 
 <Layout title="404 - Page Not Found" padding="64" path="/404">
-  <div class="w-full max-w-md px-6 py-6 rounded-md">
+  <Container>
     <h1
       class="text-slate-200 antialised font-bold text-2xl mb-5 animate-fade stagger-50"
     >
@@ -16,5 +17,5 @@ import Layout from "@components/Layout.astro";
       <i>"Not all those who wander are lost"<br />- Tolkien</i>
     </p>
     <Nav />
-  </div>
+  </Container>
 </Layout>
