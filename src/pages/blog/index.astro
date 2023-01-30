@@ -1,10 +1,12 @@
 ---
 import Nav from "@components/Nav.astro";
-import Layout from "@components/Layout.astro";
+import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
+
+const posts = await Astro.glob("./*.md");
 ---
 
-<Layout title="Ibrahim Hisham ~ Blog" padding="48" path="/blog">
+<Layout title="Ibra's Blog ~" padding="48" path="/blog">
   <Container>
     <Nav />
     <h1
@@ -12,6 +14,14 @@ import Container from "@components/Container.astro";
     >
       Blog Posts
     </h1>
-    <p>Soon...</p>
+    <ul>
+      {
+        posts.map((post) => (
+          <li class="text-slate-400 antialised text-base list-disc animate-fade stagger-450">
+            <a href={post.url}>{post.frontmatter.title}</a>
+          </li>
+        ))
+      }
+    </ul>
   </Container>
 </Layout>

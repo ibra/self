@@ -1,0 +1,14 @@
+---
+const { post } = Astro.props.post;
+---
+
+<div>
+  <li
+    class={`rounded-md px-4 py-4 mb-4 hover:text-slate-600 hover:border-slate-700 transition-colors animate-fade stagger-${Astro.props.delay}`}
+  >
+    <h2 class="font-bold text-lg">{post.title}</h2>
+    <h3 class="font-bold text-lg">{post.date}</h3>
+
+    <h3>{Astro.props.description}</h3>
+  </li>
+</div>
