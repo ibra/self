@@ -1,5 +1,4 @@
 ---
-author: "Ibrahim"
 title: "Hello!"
 layout: ../../layouts/PostLayout.astro
 description: "So this exists now, i guess."
