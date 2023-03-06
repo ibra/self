@@ -1,0 +1,7 @@
+h2 {  
+  @apply font-bold text-base text-xl antialiased py-4;
+}
+
+img, video {
+    @apply py-4 leading-snug
+}
