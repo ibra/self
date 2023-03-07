@@ -15,7 +15,9 @@ const posts = await Astro.glob("./*.md");
     >
       Blog Posts
     </h1>
-    <ul>
+    <ul
+      class="grid grid-flow-row auto-rows-max text-slate-400 antialised text-base"
+    >
       {
         posts
           .sort(
@@ -27,7 +29,8 @@ const posts = await Astro.glob("./*.md");
             <DetailModal
               url={post.url}
               title={post.frontmatter.title}
-              description={post.frontmatter.description}
+              description={post.frontmatter.date}
+              target="_self"
               delay="50"
             />
           ))

@@ -2,7 +2,7 @@
 title: "Ibreview: Arcane"
 layout: ../../layouts/PostLayout.astro
 description: "Arcane was one of the best shows I watched in 2021. So... what makes it so special?"
-date: 
+date: "2022-01-05"
 ---
 
 I finished Arcane _(twice)_ last month, and I can confidently say it is the best show i watched in 2021, and probably one that will live in my mind for years to come. There is a lot that makes Arcane stand out, from its excellent cinematography to its beautifully choreographed action scenes, as well as the well-written characters with depth and purpose behind them. This review is **spoiler-free** but to be honest, I still recommend going into this show completely blind if you're already interested.\
@@ -10,7 +10,7 @@ I finished Arcane _(twice)_ last month, and I can confidently say it is the best
 ## Dual Story
 
 ![Piltover](https://i.ibb.co/7pKqRRw/arcane-titlessd.png)
-Arcane follows this very captivating parallel story of a clash between two sisters, two cities and two varying ideologies. The narrative structure is set up perfectly to represent both sides and without giving too much away, the convergence of these stories from all angles is pulled off insanely well. Conflict is arisen and bonds are broken and new bonds are forged from both sides with each and every character contributing to the central overarching parallel plot thread.\
+The show follows this very captivating story that is basically running in parallel: a clash between two sisters, two cities, and two varying ideologies. The narrative structure is set up perfectly to represent both sides and without giving too much away, the convergence of these stories from all angles is pulled off insanely well. Conflict is arisen and bonds are broken and new bonds are forged from both sides with each and every minor character contributing to the central overarching parallel plot thread.
 
 ## Masterpiece Of Animation
 
@@ -27,7 +27,7 @@ The love and care that went into animating this show is quite clear, with the ex
 
 ![Vi kicking more ass](https://i.ibb.co/8jtw8xr/jab-vi.gif)
 
-Arcane has a certain charm with it's action. It's very grounded in reality but also has somewhat of a fantastical aspect to it like you would expect from literal Champions in the League universe. A lot of the major action scenes are beautifully choreographed, almost in a music-video like way. 
+Arcane has a certain charm with it's action. It's very grounded in reality but also has somewhat of a fantastical aspect to it like you would expect from literal Champions in the League universe. A lot of the major action scenes are beautifully choreographed.
 ##
 This show does not fear to be brutal with it's action. I had expected it to be much less viscerally violent considering the players of the game its adapting generally fall in the PG-13 range, but man is it up-front and real with its approach to violence, not letting ratings affect its creative portrayal, something that I greatly appreciated. 
 
@@ -40,12 +40,10 @@ The characters in Arcane are well-written, with depth and internal conflicts and
 This show doesnt blast you with exposition but delivers a lot of it from the environment and expressions of the characters alone. It is one of those shows where even facial expressions and environmental storytelling go a very long way, which can be partially attributed to its superb animation and clever use of cinematography.
 ##
 As for fan service, they have taken a very subtle approach (which is something I appreciate, knowing nothing about League of Legends lore going into the show). It is mostly just found in subtle details in the environments or on characters and is never explicity enough for someone who has never experienced League lore to feel left out.
-##
-The voice acting in this show often gets taken for granted but it is honestly amazing for pretty much _all_ the characters as far as I can recall. I know how bad voice-acting can get in video-game adaptations and I'm happy to say that Arcane does not fall victim to this.
 
 ## Epic Beatz
 
-The music is honestly just amazing, not just in terms of sounding good on its own (which it does) but also with every scene having perfect music complementing it, ranging from heavy metal to classical to indie pop and even rap which all merge together to form this beautiful soundtrack that had me shedding tears by the final song. Without spoiling anything, when the music picks up in this show, just know, shit is about to go down.
+The music is honestly just amazing, not just in terms of sounding good on its own (which it does) but also with every scene having perfect music complementing it, ranging from heavy metal to classical and even rap which all merge together to form this beautiful soundtrack that had me shedding tears by the final song. Without spoiling anything, when the music picks up in this show, just know, shit is about to go down. Each fight scene in this show could practically be its own amazing music video.
 
 ## Verdict
 

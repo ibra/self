@@ -1,6 +1,10 @@
-<a href={Astro.props.url} target="_blank" rel="noreferrer">
+<a
+  href={Astro.props.url}
+  target={Astro.props.target || "_blank"}
+  rel="noreferrer"
+>
   <li
-    class={`border-2 rounded-md px-4 py-4 mb-4 hover:text-slate-600 hover:border-slate-700 transition-colors animate-fade stagger-${Astro.props.delay}`}
+    class={`border-2 rounded-md px-4 py-2 mb-4 hover:text-slate-600 hover:border-slate-700 transition-colors animate-fade stagger-${Astro.props.delay}`}
   >
     <h2 class="font-bold text-lg">{Astro.props.title}</h2>
     <h3>{Astro.props.description}</h3>
