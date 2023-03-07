@@ -1,5 +1,5 @@
 ---
-title: "Ibreview: Arcane"
+title: "Ibreview: Arcane Season 1"
 layout: ../../layouts/PostLayout.astro
 description: "Arcane was one of the best shows I watched in 2021. So... what makes it so special?"
 date: "2022-01-05"
