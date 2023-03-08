@@ -29,7 +29,7 @@ Pakistan also has infamous laws for the punishment of blasphemy and apostasy. Th
 
 ## Censorship is Fine 🙄
 
-No, it's not. This heading sounds dumb, but its a common sentiment among many Pakistani's ive engaged in conversation with. First of all, it is not the state's job AT ALL to censor media to such a great extent. Banning views different to yours is one of the most close-minded things you can do, whether that be through [running NetSweeper at a national level](https://tribune.com.pk/story/565879/pakistan-government-using-netsweeper-for-internet-filtering-report) or banning *any* form of secular discussion.
+No, it's not. This heading may sound dumb, but its a common sentiment among many Pakistani's ive engaged in conversation with. First of all, it is not the state's job AT ALL to censor media to such a great extent. Banning views different to yours is one of the most close-minded things you can do, whether that be through [running NetSweeper at a national level](https://tribune.com.pk/story/565879/pakistan-government-using-netsweeper-for-internet-filtering-report) or banning *any* form of secular discussion.
 ##
 It's the same as when the United States [tried to ban alchohol in the 1920's](https://en.wikipedia.org/wiki/Prohibition_in_the_United_States) and caused hundreds of black markets to start operations. Prohibition and censorship is like closing your eyes and putting earplugs in your ears and pretending something that is clearly there never exists, while simultaneously causing people to crowd around you curious about what you're blocking yourself from. 
 ##
