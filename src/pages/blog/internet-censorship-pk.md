@@ -27,10 +27,10 @@ The Pakistani government even tried to ban Virtual Private Network's under the p
 
 Pakistan also has infamous laws for the punishment of blasphemy and apostasy. The law for punishment ranges from a fine to a straight up death penalty by hanging, and has received international criticism worldwide. Ex-muslim websites, youtubers and any trace of criticism of Islam has been banned, and over 75 people have been murdered over it since 1987. Shia websites such as [ShiaChat](https://www.shiachat.com/) have been banned. News sources that are **secular** and speak out for the constant oppression and persecution over minorities such as the [Rabwah Times](https://www.rabwah.net/) have been banned under the guide of "blasphemy" and false blasphemy cases are widespread in the judicial system.
 
-## Censorship is Fine 🙄
+## Censorship is Fine As Long As XYZ 🙄
 
-No, it's not. This heading may sound dumb, but its a common sentiment among many Pakistani's ive engaged in conversation with. First of all, it is not the state's job AT ALL to censor media to such a great extent. Banning views different to yours is one of the most close-minded things you can do, whether that be through [running NetSweeper at a national level](https://tribune.com.pk/story/565879/pakistan-government-using-netsweeper-for-internet-filtering-report) or banning *any* form of secular discussion.
+No, it's not. This heading may sound dumb, but its a common sentiment among many Pakistani's ive talked to about this. First of all, I can't believe i have to point this out, but, it is not the state's job AT ALL to censor media to such a great extent. Banning views different to yours is one of the most close-minded things you can do, and here it's not just that but stuff like [running NetSweeper at a national level](https://tribune.com.pk/story/565879/pakistan-government-using-netsweeper-for-internet-filtering-report) or banning secular discussion.
 ##
 It's the same as when the United States [tried to ban alchohol in the 1920's](https://en.wikipedia.org/wiki/Prohibition_in_the_United_States) and caused hundreds of black markets to start operations. Prohibition and censorship is like closing your eyes and putting earplugs in your ears and pretending something that is clearly there never exists, while simultaneously causing people to crowd around you curious about what you're blocking yourself from. 
 ##
-Just because the state does not agree with something, doesn't mean they can censor it, that is a pill in a box of reality checks that is too hard to swallow for people here, and will ultimately come to bite us in the back.
+This is a pill in a box of reality checks that people refuse to swallow here, and will ultimately come to bite us in the back.
