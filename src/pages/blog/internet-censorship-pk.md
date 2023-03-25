@@ -9,7 +9,7 @@ It's no secret that Pakistan isn't exactly the most tolerant country when it com
 
 ## Denial
 
-The (ex) Prime Minister [constantly denied](https://www.dawn.com/news/1497391) any authoritative internet or media censorship in Pakistan during his tenure and said `talking about curbs on press freedom in Pakistan is a “joke”`. This is the same prime minister in who's tenure [**over 900,000 websites** were banned](https://www.dawn.com/news/1507590) for  "reasons such as carrying blasphemous and pornographic content and/or sentiments against the state, judiciary or the armed forces". These websites under the guise of immoral content or sentiment against the state included indian news websites, secular websites, and sites containing government-decided "immoral content".
+The (ex) Prime Minister [constantly denied](https://www.dawn.com/news/1497391) any authoritative internet or media censorship in Pakistan during his tenure and said `talking about curbs on press freedom in Pakistan is a “joke”`. This is the same prime minister in who's tenure [**over 901,000 websites** were banned](https://www.dawn.com/news/1507590) for  "reasons such as carrying blasphemous and pornographic content and/or sentiments against the state, judiciary or the armed forces". These websites under the guise of immoral content or sentiment against the state included indian news websites, secular websites, and sites containing government-decided "immoral content".
 
 ## Abuse
 
@@ -19,7 +19,7 @@ The (ex) Prime Minister [constantly denied](https://www.dawn.com/news/1497391) a
 
 Although I am obviously uncomfortable with this censorship, I could at the very least tolerate it if it did not affect me. However, this censorship is so insanely dumb, that websites such as [PasteBin](https://pastebin.com), [DeviantArt](https://deviantart.com) have been banned for no reason at all specified by the Pakistan Telecommunication Authority, and websites like [TikTok](https://tiktok.com) were banned over "immoral content".
 ##
-Even video games like Player Unknowns Battlegrounds were temporarily banned, and the ban was not lifted until millions of Pakistani's flooded social media with it. This censorship is so authoratative and dystopian that it's not even funny at this point. It's insanely stupid how deep this censorship goes and theres only a tiny vocal minority actually speaking out for it.
+Even video games like Player Unknowns Battlegrounds were temporarily banned, and the ban was not lifted until millions of Pakistani's flooded social media with it. This censorship is so authoritative and dystopian that it's not even funny at this point. It's insanely stupid how deep this censorship goes and theres only a tiny vocal minority actually speaking out for it.
 ##
 The Pakistani government even tried to ban Virtual Private Network's under the pretense that it was an action that was being undertaken “to promote legal ICT services/business in Pakistan and safety of telecom users”. Thankfully, the Pakistan Telecommunication Authority has zero clue as to what the hell they're doing so they werent able to enforce the plans they had.
 
