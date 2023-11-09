@@ -2,6 +2,8 @@
 import Nav from "@components/Nav.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
+
+const age = new Date().getFullYear() - new Date("2007-10-27").getFullYear();
 ---
 
 <Layout title="Ibrahim Hisham ~  Me" padding="48" path="me">
@@ -59,8 +61,8 @@ import Container from "@components/Container.astro";
     </a>
     <div class="text-slate-400 antialised text-base leading-relaxed mb-5">
       <p class="animate-fade stagger-250">
-        I'm a 15 year old programmer and hobbyist indie game developer from
-        Pakistan. <br />
+        I'm a {age} year old programmer and hobbyist indie game developer from Pakistan.
+        <br />
         <br />
       </p>
       <p class="animate-fade stagger-300">
