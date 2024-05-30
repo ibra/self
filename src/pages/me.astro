@@ -2,44 +2,42 @@
 import Nav from "@components/Nav.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
+import Heading from "@components/Heading.astro";
 
-const age = Math.floor((new Date().getTime() - new Date("2007-10-27").getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+const age = Math.floor(
+  (new Date().getTime() - new Date("2007-10-27").getTime()) /
+    (1000 * 60 * 60 * 24 * 365.25)
+);
 ---
 
 <Layout title="Ibrahim Hisham ~  Me" padding="32" path="me">
   <Container>
     <Nav />
-    <h1
-      class="text-slate-200 antialised font-bold text-2xl mb-2 animate-fade stagger-50"
-    >
-      Links
-    </h1>
+    <Heading title="Links" styling="stagger-50" />
     <ul
       class="text-slate-400 antialised text-base mb-5 animate-fade stagger-100"
     >
       <li>
-        Email: <a
+        mail: <a
           href="mailto:ibrahim.hisham@proton.me"
           class="text-slate-200 hover:text-slate-400"
           >ibrahim.hisham@proton.me</a
         >
       </li>
       <li>
-        Github: <a
+        github: <a
           href="https://github.com/ibra"
           class="text-slate-200 hover:text-slate-400">/ibra</a
         >
       </li>
       <li>
-        Itch: <a
+        itch: <a
           href="https://ibrahh.itch.io"
           class="text-slate-200 hover:text-slate-400">/ibrahh</a
         >
       </li>
     </ul>
-    <h2 class="antialised font-bold text-2xl my-5 animate-fade stagger-150">
-      A Little About Me
-    </h2>
+    <Heading title="A Little About Me" styling="stagger-150 mb-5" />
     <a
       href="/images/smol_ibra.jpg"
       target="_blank"
@@ -52,24 +50,29 @@ const age = Math.floor((new Date().getTime() - new Date("2007-10-27").getTime())
         alt="Picture of me"
         width="25%"
       />
+
+      <div class="text-slate-400 antialised text-base leading-relaxed mb-5">
+        <p class="animate-fade stagger-250">
+          I'm a {age} year old programmer and hobbyist indie game developer from
+          Pakistan.
+          <br />
+          <br />
+        </p>
+        <p class="animate-fade stagger-300">
+          Systems programming is my current interest, especially anything to do
+          with compilers, networking, games, and emulation.
+        </p>
+        <br />
+        <p class="animate-fade stagger-350">
+          I love games. The craft of making them, to me, has always felt like
+          the greatest amalgamation of all the art forms i appreciate.
+        </p>
+        <br />
+        <p class="animate-fade stagger-400">
+          Some tools i'm familiar with include Rust, Typescript, C# and .NET,
+          and Godot, Bevy and Unity for game development.
+        </p>
+      </div>
     </a>
-    <div class="text-slate-400 antialised text-base leading-relaxed mb-5">
-      <p class="animate-fade stagger-250">
-        I'm a {age} year old programmer and hobbyist indie game developer from Pakistan.
-        <br />
-        <br />
-      </p>
-      <p class="animate-fade stagger-300">
-       Systems programming is my current interest, especially anything to do with compilers, networking, games, and emulation. 
-      </p>
-      <br />
-      <p class="animate-fade stagger-350">
-        I love games. The craft of making them, to me, has always felt like the greatest amalgamation of all the art forms i appreciate.  
-      </p>
-      <br />
-      <p class="animate-fade stagger-400">
-        Some tools i'm familiar with include Rust, Typescript, C# and .NET, and Godot, Bevy and Unity for game development. 
-      </p>
-    </div>
   </Container>
 </Layout>

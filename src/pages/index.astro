@@ -1,29 +1,26 @@
 ---
+import Heading from "@components/Heading.astro";
 import Nav from "@components/Nav.astro";
 import Layout from "@layouts/BaseLayout.astro";
 ---
 
-<Layout title="Ibrahim Hisham ~" padding="32">
+<Layout title="ibrahim hisham" padding="32">
   <div class="w-full max-w-md px-6 py-6 rounded-md">
-    <a href="https://github.com/ibra" aria-label="My GitHub">
+    <a href="https://github.com/ibra" aria-label="github profile link">
       <img
         src="https://avatars.githubusercontent.com/u/61324615?s=400&u=cd5a3ad6174065373219381434f09a76525f7bde&v=4"
-        class="w-32 rounded-md animate-fade"
+        class="w-48 rounded-md animate-fade"
         alt="profile picture"
         class="stagger-50"
       />
     </a>
-    <h1
-      class="animate-fade antialised font-bold text-2xl my-3 leading-snug stagger-100"
-    >
-      Ibrahim Hisham ~
-    </h1>
-    <p class="stagger-150 animate-fade">
+    <Heading title="Ibrahim Hisham" styling="stagger-100" />
+    <p class="stagger-150 animate-fade text-lg">
       Programmer in Rust, C#, and TypeScript by day, hobbyist indie game
       developer by night.
     </p>
     <br />
-    <p class="stagger-200 animate-fade">
+    <p class="stagger-200 animate-fade text-lg">
       You may know me as Ibra around the internet.
     </p>
     <br />
