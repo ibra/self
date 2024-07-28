@@ -31,11 +31,6 @@ nav span {
   background: #ffffff1c;
 }
 
-ul {
-  @apply my-5;
-}
-
-/* Conditional, Tailwind does not generate it */
 .py-48 {
   padding-top: 12rem;
   padding-bottom: 12rem;

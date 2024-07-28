@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: { space: ['Space Mono', ...defaultTheme.fontFamily.mono] },
-      animation: { fade: 'enter .6s both' },
+      animation: { fade: 'enter .3s both' },
       keyframes: {
         enter: {
           '0%': { opacity: 0, transform: 'translateY(10px)' },
