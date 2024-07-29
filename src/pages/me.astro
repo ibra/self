@@ -3,6 +3,7 @@ import Nav from "@components/Nav.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
+import SmolIbra from "../assets/smol.jpg";
 
 const age = Math.floor(
   (new Date().getTime() - new Date("2007-10-27").getTime()) /
@@ -13,7 +14,7 @@ const age = Math.floor(
 <Layout title="Ibrahim Hisham ~  Me" padding="32" path="me">
   <Container>
     <Nav />
-    <Heading title="Links" styling="stagger-50" />
+    <Heading title="~" styling="stagger-50" />
     <ul class="text-slate-400 antialised text-base animate-fade stagger-100">
       <li>
         mail <br />
@@ -45,20 +46,14 @@ const age = Math.floor(
         >
       </li>
     </ul>
-    <Heading title="A Little About Me" styling="stagger-150 mb-5" />
-    <a
-      href="/images/smol_ibra.jpg"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="small depiction of ibrahim"
-    >
-      <img
-        class="float-left mr-5 animate-fade stagger-200"
-        src="/images/smol_ibra.jpg"
-        alt="Picture of me"
-        width="25%"
-      />
-    </a>
+
+    <Heading title="~" styling="stagger-150 mb-5" />
+    <img
+      class="float-left mr-5 animate-fade stagger-200"
+      src={SmolIbra}
+      alt="pictured: smol ibra"
+      width="25%"
+    />
     <div class="text-slate-400 antialised leading-relaxed mb-5">
       <p class="animate-fade stagger-250 text-lg">
         I'm a {age} year old programmer and hobbyist indie game developer from Lahore,
