@@ -21,5 +21,5 @@ walking their miserable turn.
 Spots etched onto your cornea /  
 Make me the wretched sin-eater.  
 <br>
-That's the new stamp and she's  
-at the post office.
+That's the new stamp and it's her
+shift at the post office.
