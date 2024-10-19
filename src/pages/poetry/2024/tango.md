@@ -1,6 +1,6 @@
 ---
 title: "it takes half a person to tango"
-date: 2024-09-26
+date: 2024-08-01
 layout: ../../../layouts/PostLayout.astro
 ---
 
