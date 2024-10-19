@@ -4,26 +4,45 @@ import "../styles/global.css";
 import "../styles/post.css";
 import Nav from "@components/Nav.astro";
 import Container from "@components/Container.astro";
+import Heading from "@components/Heading.astro";
 ---
 
-<html>
+<html lang="en">
   <head>
-    <title>{`Ibra's Blog ~ ${frontmatter.title}`}</title>
+    <title>{Astro.props.title}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="description" content={frontmatter.description} />
+    <meta name="robots" content="follow, index" />
+    <meta
+      content="ibrahim hisham. programmer and hobbyist independent game developer. Rust, C#, Typescript."
+      name="description"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ibrahim hisham" />
+    <meta
+      property="og:description"
+      content="ibrahim hisham. programmer & hobbyist independent game developer. Rust, C#, Typescript."
+    />
+    <meta property="og:title" content={Astro.props.title} />
+    <meta
+      property="og:image"
+      content="https://avatars.githubusercontent.com/u/61324615?v=4"
+    />
+    <meta name="theme-color" content="#050505" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
-  <body class="bg-gray-900">
+  <body class="bg-[#050505]">
     <div
-      class={`flex min-h-full items-center justify-center py-64 px-8 sm:px-8 lg:px-8`}
+      class={`flex min-h-screen items-center justify-center py-${Astro.props.padding} px-4 sm:px-6 lg:px-8`}
     >
       <Container>
         <Nav />
-        <h1
-          class="animate-fade antialised font-bold text-2xl my-4 leading-snug stagger-50"
-        >
-          {frontmatter.title}
-        </h1>
+        <Heading title={frontmatter.title}/>
         <slot />
       </Container>
     </div>
