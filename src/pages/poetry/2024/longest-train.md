@@ -12,8 +12,9 @@ What wreck? What salvage?
 Tore half the tickets to  
 the longest train.  
 <br>
-Hire a conductor and feel smatterings  
-of alive in the illusion of  
+Hire a conductor and feel  
+smatterings of alive  
+in the illusion of  
 his expertise.  
 <br>
 Terrible at precision tools and  
