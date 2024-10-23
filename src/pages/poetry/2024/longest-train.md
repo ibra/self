@@ -17,6 +17,6 @@ smatterings of alive
 in the illusion of  
 his expertise.  
 <br>
-Terrible at precision tools and  
-gauging the anatomy of  
+Terrible at precision tools  
+and gauging the anatomy of  
 his own decisions.
