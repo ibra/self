@@ -15,6 +15,6 @@ No calm after the storm— only Drench.
 Fountain orchestry. Puddle depth.
 <br>
 Short dip. Luminescent flash. Shone the brightest. Went out the fastest.  
-Settled tide.  
 <br>
+Settled tide.  
 No use to the skipper.
