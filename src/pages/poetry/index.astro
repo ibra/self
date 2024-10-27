@@ -6,10 +6,6 @@ import DetailModal from "@components/DetailModal.astro";
 import Heading from "@components/Heading.astro";
 
 const posts = await Astro.glob("./**/*.md");
-
-posts.forEach((element) => {
-  console.log(new Date(element.frontmatter.date));
-});
 ---
 
 <Layout title="ibrahim hisham ~ poetry" padding="16" path="/work">
