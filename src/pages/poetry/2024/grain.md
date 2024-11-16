@@ -15,7 +15,8 @@ malt, jaan. From that
 tote bag and whatever  
 I can get my hands on.  
 <br>
-Longing coiled around my skin is vitiation.  
+Longing coiled around my  
+skin is vitiation.  
 <br>
 Desire is a friend that  
 begs for estrangement.  
