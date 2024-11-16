@@ -14,7 +14,7 @@ lifetime of putting up. Selling marked tickets.
 <br>  
 The cuts in the glint of his eye and the  
 burns outside. The flares scorching his  
-iris and the gaps in his hands failing  
+wrists and the gaps in his hands failing  
 <br>
 to fling them away. Blinded to reap  
 from the gardens in which he keeps tilling.  
