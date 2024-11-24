@@ -18,8 +18,8 @@ and it was violent, violent.
 Worms, the human benchmark,  
 walking their miserable turn.  
 <br>
-Spots etched onto your cornea /  
+Spots etched onto your cornea.  
 Make me the wretched sin-eater.  
 <br>
-That's the new stamp and it's her
+That's the new stamp and her  
 shift at the post office.
