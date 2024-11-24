@@ -10,7 +10,7 @@ strewn across the windowsill
 <br>
 Bloody hands are drawn  
 <br>
-to bright skies and
+to bright skies and  
 clouds of summer seen  
 <br>
 through the cracked window.
