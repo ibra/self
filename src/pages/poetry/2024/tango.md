@@ -8,8 +8,7 @@ Not quite that Grief is immutable
 or the windmill trouble turns.  
 <br>
 Tracing blunt needles is  
-my new twenty four seven  
-after all.  
+my new twenty four seven.  
 <br>
 
 Reciprocity and I untied the knot  
