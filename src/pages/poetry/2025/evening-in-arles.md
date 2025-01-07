@@ -4,11 +4,11 @@ date: 2025-01-02
 layout: ../../../layouts/PostLayout.astro
 ---
 
-I've never met a hill I wouldn't die on. You were  
-several marked by paths you now deprive  
-me of and sparsely dotted  
+I've never met a hill I wouldn't die on. You  
+were several marked by paths you now deprive  
+me of and sparsely dotted next to riverbeds  
 <br>
-next to riverbeds the pelicans  
+the pelicans  
 can no longer drink near.  
 <br>
 We pass the Rhône and imagine starless nights  
@@ -22,9 +22,11 @@ She too fades away with the night.
 Lonely boats row in pairs. I flicker as  
 the observant streetlamp passed under.  
 <br>
-Your quick reprieve on the waves.  
-My photons bumping tender skin.  
+Your quick reprieve on the waves. My  
+photons brushing against tender skin.  
 <br>
-The fog grows thicker over Arles. The smoke cruel  
-and in my sclera. Cold shatters all impressions.  
-No time to think of hills and such.
+The fog grows thicker over Arles. The  
+smoke cruel cut and in my sclera. Cold  
+<br>
+shatters the panes. No bell chimes left  
+for thinking of your hills and such.
