@@ -1,0 +1,78 @@
+---
+---
+
+<div class="fixed inset-0 pointer-events-none" id="floating-pixels">
+</div>
+
+<script>
+  interface Pixel {
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    speed: number;
+    element: HTMLDivElement;
+  }
+
+  class FloatingPixelsManager {
+    private pixels: Pixel[] = [];
+    private container: HTMLDivElement;
+
+    constructor(container: HTMLDivElement) {
+      this.container = container;
+      this.createPixels();
+      this.startAnimation();
+    }
+
+    private createPixels() {
+      for (let i = 0; i < 20; i++) {
+        const pixelElement = document.createElement('div');
+        pixelElement.className = 'absolute bg-grray opacity-50';
+        
+        const pixel: Pixel = {
+          id: i,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          size: Math.random() * 4 + 2,
+          speed: Math.random() * 0.5 + 0.1,
+          element: pixelElement
+        };
+
+        this.updatePixelStyle(pixel);
+        this.container.appendChild(pixelElement);
+        this.pixels.push(pixel);
+      }
+    }
+
+    private updatePixelStyle(pixel: Pixel) {
+      const style = pixel.element.style;
+      style.left = `${pixel.x}px`;
+      style.top = `${pixel.y}px`;
+      style.width = `${pixel.size}px`;
+      style.height = `${pixel.size}px`;
+    }
+
+    private animatePixels() {
+      this.pixels.forEach(pixel => {
+        pixel.y -= pixel.speed;
+        pixel.x += Math.sin(pixel.y * 0.1) * 0.5;
+
+        if (pixel.y < -pixel.size) {
+          pixel.y = window.innerHeight + pixel.size;
+          pixel.x = Math.random() * window.innerWidth;
+        }
+
+        this.updatePixelStyle(pixel);
+      });
+    }
+
+    private startAnimation() {
+      setInterval(() => this.animatePixels(), 50);
+    }
+  }
+
+  const container = document.getElementById('floating-pixels') as HTMLDivElement;
+  if (container) {
+    new FloatingPixelsManager(container);
+  }
+</script>
