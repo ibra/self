@@ -28,5 +28,4 @@ photons brushing against tender skin.
 The fog grows thicker over Arles. The  
 smoke cruel cut and in my sclera. Cold  
 <br>
-shatters the panes. No bell chimes left  
-for thinking of your hills and such.
+shatters the decorated panes.
