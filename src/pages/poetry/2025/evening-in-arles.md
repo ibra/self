@@ -28,4 +28,4 @@ photons brushing against tender skin.
 The fog grows thicker over Arles. The  
 smoke cruel cut and in my sclera. Cold  
 <br>
-shatters the decorated panes.
+shatters the panes.
