@@ -1,8 +1,6 @@
 ---
 ---
-
 <div class="fixed inset-0 pointer-events-none" id="floating-pixels"></div>
-
 <script>
   interface Pixel {
     id: number;
@@ -10,24 +8,84 @@
     y: number;
     size: number;
     speed: number;
-    element: HTMLDivElement;
+    element?: HTMLDivElement;
+  }
+
+  interface PixelState {
+    pixels: Omit<Pixel, 'element'>[];
+    timestamp: number;
   }
 
   class FloatingPixelsManager {
     private pixels: Pixel[] = [];
     private container: HTMLDivElement;
+    private animationId: number | null = null;
 
     constructor(container: HTMLDivElement) {
       this.container = container;
-      this.createPixels();
+      this.loadOrCreatePixels();
       this.startAnimation();
+      this.setupStateSync();
+    }
+
+    private saveState() {
+      const state: PixelState = {
+        pixels: this.pixels.map(p => ({
+          id: p.id,
+          x: p.x,
+          y: p.y,
+          size: p.size,
+          speed: p.speed
+        })),
+        timestamp: Date.now()
+      };
+      sessionStorage.setItem('floating-pixels-state', JSON.stringify(state));
+    }
+
+    private loadState(): PixelState | null {
+      const saved = sessionStorage.getItem('floating-pixels-state');
+      if (!saved) return null;
+      
+      try {
+        const state: PixelState = JSON.parse(saved);
+        // only use saved state if it's less than 30 seconds old
+        if (Date.now() - state.timestamp < 30000) {
+          return state;
+        }
+      } catch (e) {
+        console.warn('Failed to parse saved pixel state');
+      }
+      
+      return null;
+    }
+
+    private loadOrCreatePixels() {
+      const savedState = this.loadState();
+      
+      if (savedState) {
+        savedState.pixels.forEach(pixelData => {
+          const pixelElement = document.createElement("div");
+          pixelElement.className = "absolute bg-slate-300 opacity-25";
+          
+          const pixel: Pixel = {
+            ...pixelData,
+            element: pixelElement
+          };
+          
+          this.updatePixelStyle(pixel);
+          this.container.appendChild(pixelElement);
+          this.pixels.push(pixel);
+        });
+      } else {
+        this.createPixels();
+      }
     }
 
     private createPixels() {
       for (let i = 0; i < 20; i++) {
         const pixelElement = document.createElement("div");
         pixelElement.className = "absolute bg-slate-300 opacity-25";
-
+        
         const pixel: Pixel = {
           id: i,
           x: Math.random() * window.innerWidth,
@@ -36,7 +94,7 @@
           speed: Math.random() * 0.5 + 0.1,
           element: pixelElement,
         };
-
+        
         this.updatePixelStyle(pixel);
         this.container.appendChild(pixelElement);
         this.pixels.push(pixel);
@@ -44,6 +102,7 @@
     }
 
     private updatePixelStyle(pixel: Pixel) {
+      if (!pixel.element) return;
       const style = pixel.element.style;
       style.left = `${pixel.x}px`;
       style.top = `${pixel.y}px`;
@@ -55,25 +114,41 @@
       this.pixels.forEach((pixel) => {
         pixel.y -= pixel.speed;
         pixel.x += Math.sin(pixel.y * 0.1) * 0.5;
-
+        
         if (pixel.y < -pixel.size) {
           pixel.y = window.innerHeight + pixel.size;
           pixel.x = Math.random() * window.innerWidth;
         }
-
+        
         this.updatePixelStyle(pixel);
       });
     }
 
     private startAnimation() {
-      setInterval(() => this.animatePixels(), 50);
+      const animate = () => {
+        this.animatePixels();
+        this.animationId = requestAnimationFrame(animate);
+      };
+      animate();
+    }
+
+    private setupStateSync() {
+      setInterval(() => this.saveState(), 1000);
+      window.addEventListener('beforeunload', () => this.saveState());
+    }
+
+    public destroy() {
+      if (this.animationId) {
+        cancelAnimationFrame(this.animationId);
+      }
+      this.saveState();
     }
   }
 
-  const container = document.getElementById(
-    "floating-pixels"
-  ) as HTMLDivElement;
+  const container = document.getElementById("floating-pixels") as HTMLDivElement;
   if (container) {
-    new FloatingPixelsManager(container);
+    const manager = new FloatingPixelsManager(container);
+    
+    window.addEventListener('beforeunload', () => manager.destroy());
   }
 </script>

@@ -120,12 +120,12 @@ const categories = [
     </div>
 
     <!-- CATEGORY PANELS -->
-    <div id="category-panels" class="relative w-full">
+    <div id="category-panels" class="relative w-full overflow-hidden">
       {
         categories.map((cat, index) => (
           <ul
-            class="category-panel flex flex-col gap-4 transition-opacity duration-500 ease-in-out"
-            style={`display: ${index === 0 ? "flex" : "none"}`}
+            class="category-panel absolute top-0 left-0 w-full flex flex-col gap-4 transition-opacity duration-500 ease-in-out"
+            style={`opacity: ${index === 0 ? "1" : "0"}; pointer-events: ${index === 0 ? "auto" : "none"}`}
             data-index={index}
           >
             {cat.items.map((item) => (
@@ -144,7 +144,25 @@ const categories = [
     <script type="module">
       const buttons = document.querySelectorAll(".category-btn");
       const panels = document.querySelectorAll(".category-panel");
+      const container = document.getElementById("category-panels");
       let active = 0;
+
+      function calculateMaxHeight() {
+        let maxHeight = 0;
+        panels.forEach((panel) => {
+          // Temporarily show panel to measure its height
+          panel.style.position = "static";
+          panel.style.opacity = "1";
+          panel.style.pointerEvents = "auto";
+          const height = panel.offsetHeight;
+          maxHeight = Math.max(maxHeight, height);
+          // Hide it again
+          panel.style.position = "absolute";
+          panel.style.opacity = panel.dataset.index == active ? "1" : "0";
+          panel.style.pointerEvents = panel.dataset.index == active ? "auto" : "none";
+        });
+        container.style.height = `${maxHeight}px`;
+      }
 
       function setActive(index) {
         buttons.forEach((btn, i) => {
@@ -156,15 +174,11 @@ const categories = [
 
         panels.forEach((panel, i) => {
           if (i === index) {
-            panel.style.display = "flex";
-            requestAnimationFrame(() => {
-              panel.style.opacity = "1";
-            });
+            panel.style.opacity = "1";
+            panel.style.pointerEvents = "auto";
           } else {
             panel.style.opacity = "0";
-            setTimeout(() => {
-              panel.style.display = "none";
-            }, 400);
+            panel.style.pointerEvents = "none";
           }
         });
       }
@@ -178,7 +192,14 @@ const categories = [
         });
       });
 
-      setActive(0);
+      // Initialize after content loads
+      window.addEventListener("load", () => {
+        calculateMaxHeight();
+        setActive(0);
+      });
+
+      // Recalculate on window resize
+      window.addEventListener("resize", calculateMaxHeight);
     </script>
   </Container>
 </Layout>
