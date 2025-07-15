@@ -5,121 +5,149 @@ import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
 
-type Category = "software" | "games" | "philosophy" | "poetry";
-type WorkItem = {
-  title: string;
-  description: string;
-  url: string;
-  delay: number;
-};
-
-const workItems: Record<Category, WorkItem[]> = {
-  software: [
-    {
-      title: "lachesis",
-      description: "Lightweight cross-platform time-tracking application written in Rust.",
-      url: "https://github.com/ibra/lachesis",
-      delay: 150
-    },
-    {
-      title: "snip.tf",
-      description: "A modern, minimalistic pastebin. Developed backend in Rust, deployed on the edge.",
-      url: "https://snip.tf/",
-      delay: 250
-    }
-  ],
-  games: [
-    {
-      title: "FOGBOUND",
-      description: "Narrative-driven psychological horror game set in a toxic, fog-ridden Lahore.",
-      url: "https://instagram.com/generatednoise",
-      delay: 150
-    },
-    {
-      title: "Pointblank",
-      description: "Fast-paced twin-stick shooter where you have a single bullet.",
-      url: "https://store.steampowered.com/app/1221330/Pointblank",
-      delay: 250
-    }
-  ],
-  philosophy: [
-    {
-      title: "Ibralogue",
-      description: "Extensible, robust dialogue framework for Unity (C#) for use in narrative games.",
-      url: "https://github.com/Ibralogue/Ibralogue",
-      delay: 150
-    }
-  ],
-  poetry: [
-    {
-      title: "Untitled Anthology",
-      description: "Experimental poetic works around identity, code, and decay. (coming soon)",
-      url: "#",
-      delay: 150
-    }
-  ]
-};
-
-const categories: Category[] = Object.keys(workItems) as Category[];
+const categories = [
+  {
+    name: "software",
+    items: [
+      {
+        title: "lachesis",
+        description:
+          "Lightweight cross-platform time-tracking application written in Rust.",
+        url: "https://github.com/ibra/lachesis",
+        delay: 150,
+      },
+      {
+        title: "snip.tf",
+        description:
+          "A modern, minimalistic pastebin. Developed backend in Rust, deployed on the edge.",
+        url: "https://snip.tf/",
+        delay: 250,
+      },
+    ],
+  },
+  {
+    name: "games",
+    items: [
+      {
+        title: "FOGBOUND",
+        description:
+          "Narrative-driven psychological horror game set in a toxic, fog-ridden Lahore.",
+        url: "https://instagram.com/generatednoise",
+        delay: 150,
+      },
+      {
+        title: "Pointblank",
+        description:
+          "Fast-paced twin-stick shooter where you have a single bullet.",
+        url: "https://store.steampowered.com/app/1221330/Pointblank",
+        delay: 250,
+      },
+    ],
+  },
+  {
+    name: "philosophy",
+    items: [
+      {
+        title: "test",
+        description:
+          "...",
+        url: "#",
+        delay: 150,
+      },
+    ],
+  },
+  {
+    name: "poetry",
+    items: [
+      {
+        title: "test",
+        description:
+          "...",
+        url: "#",
+        delay: 150,
+      },
+    ],
+  },
+];
 ---
-
 <Layout title="ibrahim hisham ~ work" padding="16" path="/work">
   <Container>
     <Nav />
     <Heading title="work" styling="stagger-50" />
     <h2 class="stagger-100 animate-fade text-slate-400 text-lg mb-5">
-      select a category:
+      some things i've done:
     </h2>
 
-    <div class="flex flex-wrap gap-3 mb-8">
+    <!-- CATEGORY BUTTONS -->
+    <div class="flex flex-wrap gap-3 mb-6" id="category-buttons">
       {categories.map((cat, index) => (
         <button
           class="category-btn text-sm md:text-base px-4 py-2 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
           data-index={index}
         >
-          {cat}
+          {cat.name}
         </button>
       ))}
     </div>
 
-    <div id="category-wrapper" class="relative w-full overflow-hidden min-h-[320px]">
-      <div
-        id="category-slider"
-        class="flex transition-transform duration-500 ease-in-out will-change-transform"
-        style={`width: ${categories.length * 100}%`}
-      >
-        {categories.map((cat) => (
-          <ul class="w-full shrink-0 px-1">
-            {workItems[cat].map((item) => (
-              <DetailModal
-                title={item.title}
-                description={item.description}
-                url={item.url}
-                delay={item.delay}
-              />
-            ))}
-          </ul>
-        ))}
-      </div>
+    <!-- CATEGORY PANELS -->
+    <div id="category-panels" class="relative w-full">
+      {categories.map((cat, index) => (
+        <ul
+          class="category-panel flex flex-col gap-4 transition-opacity duration-500 ease-in-out"
+          style={`display: ${index === 0 ? "flex" : "none"}`}
+          data-index={index}
+        >
+          {cat.items.map((item) => (
+            <DetailModal
+              title={item.title}
+              description={item.description}
+              url={item.url}
+              delay={item.delay}
+            />
+          ))}
+        </ul>
+      ))}
     </div>
-  </Container>
 
-  <script type="module">
-    const buttons = document.querySelectorAll(".category-btn");
-    const slider = document.getElementById("category-slider");
-    let active = 0;
+    <script type="module">
+      const buttons = document.querySelectorAll(".category-btn");
+      const panels = document.querySelectorAll(".category-panel");
+      let active = 0;
 
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const index = parseInt(btn.dataset.index);
-        if (index === active) return;
+      function setActive(index) {
+        buttons.forEach((btn, i) => {
+          btn.classList.toggle("border-white", i === index);
+          btn.classList.toggle("text-white", i === index);
+          btn.classList.toggle("border-slate-600", i !== index);
+          btn.classList.toggle("text-slate-400", i !== index);
+        });
 
-        const percentage = -(index * 100);
-        slider.style.transform = `translateX(${percentage}%)`;
+        panels.forEach((panel, i) => {
+          if (i === index) {
+            panel.style.display = "flex";
+            requestAnimationFrame(() => {
+              panel.style.opacity = "1";
+            });
+          } else {
+            panel.style.opacity = "0";
+            setTimeout(() => {
+              panel.style.display = "none";
+            }, 400);
+          }
+        });
+      }
 
-        active = index;
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const index = parseInt(btn.dataset.index);
+          if (index === active) return;
+          setActive(index);
+          active = index;
+        });
       });
-    });
-  </script>
-</Layout>
 
+      setActive(0);
+    </script>
+  </Container>
+</Layout>

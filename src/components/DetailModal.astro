@@ -1,12 +1,18 @@
-<a
-  href={Astro.props.url}
-  target={Astro.props.target || "_blank"}
-  rel="noreferrer"
+---
+const { title, description, url, delay, target = "_blank" } = Astro.props;
+---
+
+<li
+  class={`border-2 rounded-md px-5 py-4 mb-4 hover:text-slate-600 hover:border-slate-700 transition-colors animate-fade stagger-${delay} box-border w-full`}
 >
-  <li
-    class={`border-2 rounded-md px-5 py-2 mb-5 hover:text-slate-600 hover:border-slate-700 transition-colors animate-fade stagger-${Astro.props.delay}`}
+  <a
+    href={url}
+    target={target}
+    rel="noreferrer"
+    class="block text-left no-underline w-full"
   >
-    <h2 class="font-bold text-2xl text-white">{Astro.props.title}</h2>
-    <p class="text-lg">{Astro.props.description}</p>
-  </li>
-</a>
+    <h2 class="font-bold text-2xl text-white break-words">{title}</h2>
+    <p class="text-lg text-slate-400 break-words overflow-wrap break-word">{description}</p>
+  </a>
+</li>
+
