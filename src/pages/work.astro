@@ -4,6 +4,63 @@ import Nav from "@components/Nav.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
+
+type Category = "software" | "games" | "philosophy" | "poetry";
+type WorkItem = {
+  title: string;
+  description: string;
+  url: string;
+  delay: number;
+};
+
+const workItems: Record<Category, WorkItem[]> = {
+  software: [
+    {
+      title: "lachesis",
+      description: "Lightweight cross-platform time-tracking application written in Rust.",
+      url: "https://github.com/ibra/lachesis",
+      delay: 150
+    },
+    {
+      title: "snip.tf",
+      description: "A modern, minimalistic pastebin. Developed backend in Rust, deployed on the edge.",
+      url: "https://snip.tf/",
+      delay: 250
+    }
+  ],
+  games: [
+    {
+      title: "FOGBOUND",
+      description: "Narrative-driven psychological horror game set in a toxic, fog-ridden Lahore.",
+      url: "https://instagram.com/generatednoise",
+      delay: 150
+    },
+    {
+      title: "Pointblank",
+      description: "Fast-paced twin-stick shooter where you have a single bullet.",
+      url: "https://store.steampowered.com/app/1221330/Pointblank",
+      delay: 250
+    }
+  ],
+  philosophy: [
+    {
+      title: "Ibralogue",
+      description: "Extensible, robust dialogue framework for Unity (C#) for use in narrative games.",
+      url: "https://github.com/Ibralogue/Ibralogue",
+      delay: 150
+    }
+  ],
+  poetry: [
+    {
+      title: "Untitled Anthology",
+      description: "Experimental poetic works around identity, code, and decay. (coming soon)",
+      url: "#",
+      delay: 150
+    }
+  ]
+};
+
+const categories: Category[] = Object.keys(workItems) as Category[];
 ---
 
 <Layout title="ibrahim hisham ~ work" padding="16" path="/work">
@@ -11,41 +68,58 @@ import Heading from "@components/Heading.astro";
     <Nav />
     <Heading title="work" styling="stagger-50" />
     <h2 class="stagger-100 animate-fade text-slate-400 text-lg mb-5">
-      some things i've done: 
+      select a category:
     </h2>
-    <ul
-      class="grid grid-flow-row auto-rows-max text-slate-400 antialised text-base"
-    >
-      <DetailModal
-        title="FOGBOUND"
-        description="Narrative-driven psychological horror game set in a toxic, fog-ridden Lahore."
-        url="https://instagram.com/generatednoise"
-        delay="150"
-      />
-      <DetailModal
-        title="Pointblank"
-        description="Fast-paced twin-stick shooter where you have a single bullet."
-        url="https://store.steampowered.com/app/1221330/Pointblank"
-        delay="250"
-      />
-      <DetailModal
-        title="lachesis"
-        description="Lightweight cross-platform time-tracking application written in Rust."
-        url="https://github.com/ibra/lachesis"
-        delay="300"
-      />
-      <DetailModal
-        title="Ibralogue"
-        description="Extensible, robust dialogue framework for Unity (C#) for use in narrative games."
-        url="https://github.com/Ibralogue/Ibralogue"
-        delay="350"
-      />
-      <DetailModal
-        title="snip.tf"
-        description="A modern, minimalistic pastebin. Developed backend in Rust, deployed on the edge."
-        url="https://snip.tf/"
-        delay="400"
-      />
-    </ul>
+
+    <div class="flex flex-wrap gap-3 mb-8">
+      {categories.map((cat, index) => (
+        <button
+          class="category-btn text-sm md:text-base px-4 py-2 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
+          data-index={index}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <div id="category-wrapper" class="relative w-full overflow-hidden min-h-[320px]">
+      <div
+        id="category-slider"
+        class="flex transition-transform duration-500 ease-in-out will-change-transform"
+        style={`width: ${categories.length * 100}%`}
+      >
+        {categories.map((cat) => (
+          <ul class="w-full shrink-0 px-1">
+            {workItems[cat].map((item) => (
+              <DetailModal
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                delay={item.delay}
+              />
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
   </Container>
+
+  <script type="module">
+    const buttons = document.querySelectorAll(".category-btn");
+    const slider = document.getElementById("category-slider");
+    let active = 0;
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const index = parseInt(btn.dataset.index);
+        if (index === active) return;
+
+        const percentage = -(index * 100);
+        slider.style.transform = `translateX(${percentage}%)`;
+
+        active = index;
+      });
+    });
+  </script>
 </Layout>
+
