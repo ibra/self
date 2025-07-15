@@ -7,9 +7,7 @@ const currentPath = pathname.slice(1).replace("/","");
   <div class="flex items-center text-slate-400 antialiased text-base">
     <a href="/" class={`animate-fade stagger-200 ${currentPath === '' ? 'text-slate-500' : ''}`}>home</a>
     <span aria-hidden="true" class="animate-fade stagger-200"></span>
-    <a href="/work" class={`animate-fade stagger-250 ${currentPath === 'work' ? 'text-slate-500' : ''}`}>work</a>
-    <!-- <span aria-hidden="true" class="animate-fade stagger-250"></span>
-    <a href="/poetry" class={`animate-fade stagger-300 ${currentPath === 'poetry' ? 'text-slate-500' : ''}`}>poetry</a> -->
+    <a href="/things" class={`animate-fade stagger-250 ${currentPath === 'things' ? 'text-slate-500' : ''}`}>things</a>
     <span aria-hidden="true" class="animate-fade stagger-300"></span>
     <a href="/self" class={`animate-fade stagger-350 ${currentPath === 'self' ? 'text-slate-500' : ''}`}>self</a>
   </div>
