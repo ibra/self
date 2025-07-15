@@ -30,27 +30,31 @@ import FloatingPixels from "@components/FloatingPixels.astro";
     />
     <meta name="theme-color" content="#050505" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-[#050505]">
-    <FloatingPixels/>
+    <FloatingPixels />
     <div
       class={`flex min-h-screen items-center justify-center py-${Astro.props.padding} px-6 sm:px-6 lg:px-10 whitespace-nowrap`}
     >
       <Container>
         <Nav />
-        <Heading title={frontmatter.title}/>
+        <Heading title={frontmatter.title} />
         <p class="stagger-100 animate-fade text-slate-400 text-lg mb-5 italic">
-          {new Date(frontmatter.date).toLocaleDateString(
-            "en-US",
-            {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            }
-          ).replace(/,/, '')}
+          {
+            new Date(frontmatter.date)
+              .toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+              .replace(/,/, "")
+          }
         </p>
         <slot />
       </Container>

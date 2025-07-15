@@ -1,8 +1,7 @@
 ---
 ---
 
-<div class="fixed inset-0 pointer-events-none" id="floating-pixels">
-</div>
+<div class="fixed inset-0 pointer-events-none" id="floating-pixels"></div>
 
 <script>
   interface Pixel {
@@ -26,16 +25,16 @@
 
     private createPixels() {
       for (let i = 0; i < 20; i++) {
-        const pixelElement = document.createElement('div');
-        pixelElement.className = 'absolute bg-slate-300 opacity-25';
-        
+        const pixelElement = document.createElement("div");
+        pixelElement.className = "absolute bg-slate-300 opacity-25";
+
         const pixel: Pixel = {
           id: i,
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
           size: Math.random() * 4 + 2,
           speed: Math.random() * 0.5 + 0.1,
-          element: pixelElement
+          element: pixelElement,
         };
 
         this.updatePixelStyle(pixel);
@@ -53,7 +52,7 @@
     }
 
     private animatePixels() {
-      this.pixels.forEach(pixel => {
+      this.pixels.forEach((pixel) => {
         pixel.y -= pixel.speed;
         pixel.x += Math.sin(pixel.y * 0.1) * 0.5;
 
@@ -71,7 +70,9 @@
     }
   }
 
-  const container = document.getElementById('floating-pixels') as HTMLDivElement;
+  const container = document.getElementById(
+    "floating-pixels"
+  ) as HTMLDivElement;
   if (container) {
     new FloatingPixelsManager(container);
   }

@@ -18,7 +18,6 @@ const posts = await Astro.glob("./**/*.md");
 
     <ul
       class="grid grid-flow-row auto-rows-max text-slate-400 antialised text-base animate-fade stagger-200"
-
     >
       {
         posts
@@ -31,14 +30,13 @@ const posts = await Astro.glob("./**/*.md");
             <DetailModal
               url={post.url}
               title={post.frontmatter.title}
-              description={new Date(post.frontmatter.date).toLocaleDateString(
-                "en-US",
-                {
+              description={new Date(post.frontmatter.date)
+                .toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                }
-              ).replace(/,/, '')}
+                })
+                .replace(/,/, "")}
               target="_self"
               delay="250"
             />

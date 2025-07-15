@@ -1,14 +1,29 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1).replace("/","");
+const currentPath = pathname.slice(1).replace("/", "");
 ---
 
 <nav class="grid gap-4 grid-rows-1 mb-5">
   <div class="flex items-center text-slate-400 antialiased text-base">
-    <a href="/" class={`animate-fade stagger-200 ${currentPath === '' ? 'text-slate-500' : ''}`}>home</a>
+    <a
+      href="/"
+      class={`animate-fade stagger-200 ${
+        currentPath === "" ? "text-slate-500" : ""
+      }`}>home</a
+    >
     <span aria-hidden="true" class="animate-fade stagger-200"></span>
-    <a href="/things" class={`animate-fade stagger-250 ${currentPath === 'things' ? 'text-slate-500' : ''}`}>things</a>
+    <a
+      href="/things"
+      class={`animate-fade stagger-250 ${
+        currentPath === "things" ? "text-slate-500" : ""
+      }`}>things</a
+    >
     <span aria-hidden="true" class="animate-fade stagger-300"></span>
-    <a href="/self" class={`animate-fade stagger-350 ${currentPath === 'self' ? 'text-slate-500' : ''}`}>self</a>
+    <a
+      href="/self"
+      class={`animate-fade stagger-350 ${
+        currentPath === "self" ? "text-slate-500" : ""
+      }`}>self</a
+    >
   </div>
 </nav>

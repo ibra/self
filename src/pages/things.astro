@@ -32,8 +32,7 @@ const categories = [
       },
       {
         title: "pseudocoding.net",
-        description:
-          "Web-based compiler for the AL/GCSE Pseudocode standard.",
+        description: "Web-based compiler for the AL/GCSE Pseudocode standard.",
         url: "https://pseudocoding.net",
         delay: 450,
       },
@@ -69,54 +68,83 @@ const categories = [
     name: "poetry",
     items: [
       {
-        title: "test",
-        description: "...",
-        url: "#",
+        title: "a model of creation",
+        description: '"borrow a jar from god and repeat the shuffle."',
+        url: "https://www.patreon.com/posts/134168008",
         delay: 150,
+      },
+      {
+        title: "Evening In Arles We Didn't Have",
+        description: '"The smoke cruel cut and in my sclera."',
+        url: "https://www.patreon.com/posts/134168153",
+        delay: 250,
+      },
+      {
+        title: "shadetinter",
+        description: '"Your curtains are opaque. I try to see through them."',
+        url: "https://www.patreon.com/posts/134166752",
+        delay: 350,
+      },
+      {
+        title: "It Takes Half A Person To Tango",
+        description:
+          '"Worms, the human benchmark, walking their miserable turn."',
+        url: "https://www.patreon.com/posts/134166691",
+        delay: 450,
+      },
+      {
+        title: "grain",
+        description: '"You want a fervid love; blistering."',
+        url: "https://www.patreon.com/posts/grain-134166260",
+        delay: 550,
       },
     ],
   },
 ];
-
 ---
+
 <Layout title="ibrahim hisham ~ work" padding="16" path="/work">
   <Container>
     <Nav />
     <Heading title="things" styling="stagger-50" />
     <h2 class="stagger-100 animate-fade text-slate-400 text-lg mb-5">
-     pick a category: 
+      pick a category:
     </h2>
 
     <!-- CATEGORY BUTTONS -->
     <div class="flex flex-wrap gap-3 mb-6" id="category-buttons">
-      {categories.map((cat, index) => (
-        <button
-          class="category-btn text-sm md:text-base px-4 py-2 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
-          data-index={index}
-        >
-          {cat.name}
-        </button>
-      ))}
+      {
+        categories.map((cat, index) => (
+          <button
+            class="category-btn text-sm md:text-base px-4 py-2 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
+            data-index={index}
+          >
+            {cat.name}
+          </button>
+        ))
+      }
     </div>
 
     <!-- CATEGORY PANELS -->
     <div id="category-panels" class="relative w-full">
-      {categories.map((cat, index) => (
-        <ul
-          class="category-panel flex flex-col gap-4 transition-opacity duration-500 ease-in-out"
-          style={`display: ${index === 0 ? "flex" : "none"}`}
-          data-index={index}
-        >
-          {cat.items.map((item) => (
-            <DetailModal
-              title={item.title}
-              description={item.description}
-              url={item.url}
-              delay={item.delay}
-            />
-          ))}
-        </ul>
-      ))}
+      {
+        categories.map((cat, index) => (
+          <ul
+            class="category-panel flex flex-col gap-4 transition-opacity duration-500 ease-in-out"
+            style={`display: ${index === 0 ? "flex" : "none"}`}
+            data-index={index}
+          >
+            {cat.items.map((item) => (
+              <DetailModal
+                title={item.title}
+                description={item.description}
+                url={item.url}
+                delay={item.delay}
+              />
+            ))}
+          </ul>
+        ))
+      }
     </div>
 
     <script type="module">
