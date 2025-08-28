@@ -7,6 +7,32 @@ import Heading from "@components/Heading.astro";
 
 const categories = [
   {
+    name: "games",
+    items: [
+      {
+        title: "FOGBOUND",
+        description:
+          "Narrative-driven psychological horror game set in a toxic, fog-ridden Lahore.",
+        url: "https://instagram.com/generatednoise",
+        delay: 150,
+      },
+      {
+        title: "Pointblank",
+        description:
+          "Fast-paced twin-stick shooter where you have a single bullet.",
+        url: "https://store.steampowered.com/app/1221330/Pointblank",
+        delay: 250,
+      },
+      {
+        title: "more... (itch.io)",
+        description:
+          "Collection of various little games made for jams and competitions.",
+        url: "https://ibrahh.itch.io",
+        delay: 350,
+      },
+    ],
+  },
+  {
     name: "software",
     items: [
       {
@@ -39,32 +65,6 @@ const categories = [
     ],
   },
   {
-    name: "games",
-    items: [
-      {
-        title: "FOGBOUND",
-        description:
-          "Narrative-driven psychological horror game set in a toxic, fog-ridden Lahore.",
-        url: "https://instagram.com/generatednoise",
-        delay: 150,
-      },
-      {
-        title: "Pointblank",
-        description:
-          "Fast-paced twin-stick shooter where you have a single bullet.",
-        url: "https://store.steampowered.com/app/1221330/Pointblank",
-        delay: 250,
-      },
-      {
-        title: "more... (itch.io)",
-        description:
-          "Collection of various little games made for jams and competitions.",
-        url: "https://ibrahh.itch.io",
-        delay: 350,
-      },
-    ],
-  },
-  {
     name: "poetry",
     items: [
       {
@@ -93,7 +93,7 @@ const categories = [
         delay: 450,
       },
     ],
-  },
+  }
 ];
 ---
 
@@ -105,7 +105,6 @@ const categories = [
       pick a category:
     </h2>
 
-    <!-- CATEGORY BUTTONS -->
     <div class="flex flex-wrap gap-3 mb-6" id="category-buttons">
       {
         categories.map((cat, index) => (
@@ -119,7 +118,6 @@ const categories = [
       }
     </div>
 
-    <!-- CATEGORY PANELS -->
     <div id="category-panels" class="relative w-full overflow-hidden">
       {
         categories.map((cat, index) => (
@@ -150,13 +148,14 @@ const categories = [
       function calculateMaxHeight() {
         let maxHeight = 0;
         panels.forEach((panel) => {
-          // Temporarily show panel to measure its height
+          // temporarily show panel to measure its height
           panel.style.position = "static";
           panel.style.opacity = "1";
           panel.style.pointerEvents = "auto";
           const height = panel.offsetHeight;
           maxHeight = Math.max(maxHeight, height);
-          // Hide it again
+
+          // hide it again
           panel.style.position = "absolute";
           panel.style.opacity = panel.dataset.index == active ? "1" : "0";
           panel.style.pointerEvents = panel.dataset.index == active ? "auto" : "none";
