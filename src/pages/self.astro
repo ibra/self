@@ -3,50 +3,15 @@ import Nav from "@components/Nav.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
-import SmolIbra from "../assets/smol.jpg";
-
-const age = Math.floor(
-  (new Date().getTime() - new Date("2007-10-27").getTime()) /
-    (1000 * 60 * 60 * 24 * 365.25)
-);
 ---
 
 <Layout title="ibrahim hisham ~ self" padding="32" path="self">
   <Container>
     <Nav />
     <Heading title="self" styling="stagger-50" />
-    <img
-      class="animate-fade lg:float-left lg:my-2 my-5 stagger-200 mr-5 w-32 lg:w-32"
-      src={SmolIbra}
-      alt="pictured: smol ibra"
-    />
-    <div class="text-slate-400 antialised leading-relaxed mb-5">
-      <p class="animate-fade stagger-200 text-lg">
-        i love being immersed in and overwhelmed with my work (partially to my
-        detriment...) hacking away at interesting technical problems and ideas.
-      </p>
-
-      <p class="animate-fade stagger-250 text-lg mt-5">
-        i want to spend my time making things that evoke, affect, and linger.
-      </p>
-
-      <p class="animate-fade stagger-300 text-lg mt-5">
-        sometimes all at once.
-      </p>
-
-      <br />
-      <p class="animate-fade stagger-350 text-lg">
-        if you have something for me, feel free to <a
-          href="mailto:ibrahim.hisham@proton.me"
-          class="text-slate-200 hover:text-slate-400">reach out</a
-        >.
-      </p>
-    </div>
-
-    <Heading title="found at" styling="stagger-350" />
 
     <ul
-      class="text-slate-400 antialised text-base animate-fade stagger-400 grid grid-cols-2"
+      class="text-slate-400 antialised text-base animate-fade stagger-150 grid grid-cols-2 mb-8"
     >
       <li>
         github <br />
@@ -77,5 +42,38 @@ const age = Math.floor(
         >
       </li>
     </ul>
+
+    <Heading title="about" styling="stagger-200" />
+
+    <div class="text-slate-400 antialised leading-relaxed mb-5">
+
+
+      <p class="animate-fade stagger-250 text-lg mt-5">
+        i'm ibrahim hisham, ibra, or <a
+          href="https://instagram.com/generatednoise"
+          class="text-slate-200 hover:text-slate-400">@generatednoise</a
+        >.
+      </p>
+      <p class="animate-fade stagger-300 text-lg mt-5">
+        by day, i love designing video games and working on systems-centric applications and other practical software.
+      </p>
+
+      <p class="animate-fade stagger-300 text-lg mt-5">
+        in my spare time i'm usually thinking about poetry, philosophy or <a
+          href="https://letterboxd.com/ibrahh/"
+          class="text-slate-200 hover:text-slate-400">film</a
+        >.
+      </p>
+
+      <p class="animate-fade stagger-350 text-lg mt-5">
+      </p>
+
+      <p class="animate-fade stagger-450 text-lg mt-5">
+        if you have something for me, feel free to <a
+          href="mailto:ibrahim.hisham@proton.me"
+          class="text-slate-200 hover:text-slate-400">reach out</a
+        >.
+      </p>
+    </div>
   </Container>
 </Layout>
