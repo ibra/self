@@ -1,0 +1,162 @@
+---
+import Nav from "@components/Nav.astro";
+import Layout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+import CompactListItem from "@components/CompactListItem.astro";
+import Heading from "@components/Heading.astro";
+
+const notePosts = await Astro.glob("./**/*.md");
+const poetryPosts = await Astro.glob("../poetry/**/*.md");
+
+const allPosts = [...notePosts, ...poetryPosts].map((post) => ({
+  ...post,
+  type: post.url?.includes("/poetry/") ? "poetry" : "note",
+}));
+
+const sortedPosts = allPosts.sort(
+  (a: any, b: any) =>
+    (new Date(b.frontmatter.date) as any) -
+    (new Date(a.frontmatter.date) as any)
+);
+
+// Extract all unique tags
+const allTags = new Set<string>();
+sortedPosts.forEach((post: any) => {
+  if (post.frontmatter.tags) {
+    post.frontmatter.tags.forEach((tag: string) => allTags.add(tag));
+  }
+});
+
+const tags = ["all", ...Array.from(allTags).sort()];
+
+// Group posts by tag
+const postsByTag: Record<string, any[]> = {
+  all: sortedPosts,
+};
+
+allTags.forEach((tag) => {
+  postsByTag[tag] = sortedPosts.filter((post: any) =>
+    post.frontmatter.tags?.includes(tag)
+  );
+});
+---
+
+<Layout title="ibrahim hisham ~ notes" padding="16" path="/notes">
+  <Container>
+    <Nav />
+    <Heading title="notes" styling="stagger-50" />
+    <p class="stagger-100 animate-fade text-lg mb-5">
+      an index of messily arranged blips.
+    </p>
+
+    <div class="flex flex-wrap gap-3 mb-6" id="tag-buttons">
+      {
+        tags.map((tag, index) => (
+          <button
+            class="tag-btn text-sm md:text-base px-4 py-2 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
+            data-index={index}
+          >
+            {tag}
+          </button>
+        ))
+      }
+    </div>
+
+    <div id="tag-panels" class="relative w-full overflow-hidden transition-all duration-300 ease-in-out">
+      {
+        tags.map((tag, index) => (
+          <ul
+            class="tag-panel absolute top-0 left-0 w-full list-none text-base transition-opacity duration-500 ease-in-out"
+            style={`opacity: ${index === 0 ? "1" : "0"}; pointer-events: ${index === 0 ? "auto" : "none"}`}
+            data-index={index}
+          >
+            {postsByTag[tag].map((post: any) => (
+              <CompactListItem
+                url={post.url}
+                title={post.frontmatter.title}
+                date={new Date(post.frontmatter.date).toLocaleDateString(
+                  "en-US",
+                  {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  }
+                )}
+                type={post.type}
+              />
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+
+    <script type="module">
+      const buttons = document.querySelectorAll(".tag-btn");
+      const panels = document.querySelectorAll(".tag-panel");
+      const container = document.getElementById("tag-panels");
+      let active = 0;
+
+      function calculateMaxHeight() {
+        let maxHeight = 0;
+        panels.forEach((panel) => {
+          panel.style.position = "static";
+          panel.style.opacity = "1";
+          panel.style.pointerEvents = "auto";
+          const height = panel.offsetHeight;
+          maxHeight = Math.max(maxHeight, height);
+
+          panel.style.position = "absolute";
+          panel.style.opacity = panel.dataset.index == active ? "1" : "0";
+          panel.style.pointerEvents =
+            panel.dataset.index == active ? "auto" : "none";
+        });
+        container.style.height = `${maxHeight}px`;
+      }
+
+      function setActive(index) {
+        // First, measure the target panel's height
+        const targetPanel = panels[index];
+        targetPanel.style.position = "static";
+        targetPanel.style.opacity = "1";
+        const targetHeight = targetPanel.offsetHeight;
+        targetPanel.style.position = "absolute";
+        
+        // Update container height smoothly
+        container.style.height = `${targetHeight}px`;
+
+        buttons.forEach((btn, i) => {
+          btn.classList.toggle("border-white", i === index);
+          btn.classList.toggle("text-white", i === index);
+          btn.classList.toggle("border-slate-600", i !== index);
+          btn.classList.toggle("text-slate-400", i !== index);
+        });
+
+        panels.forEach((panel, i) => {
+          if (i === index) {
+            panel.style.opacity = "1";
+            panel.style.pointerEvents = "auto";
+          } else {
+            panel.style.opacity = "0";
+            panel.style.pointerEvents = "none";
+          }
+        });
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const index = parseInt(btn.dataset.index);
+          if (index === active) return;
+          setActive(index);
+          active = index;
+        });
+      });
+
+      window.addEventListener("load", () => {
+        calculateMaxHeight();
+        setActive(0);
+      });
+
+      window.addEventListener("resize", calculateMaxHeight);
+    </script>
+  </Container>
+</Layout>

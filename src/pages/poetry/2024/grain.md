@@ -2,6 +2,7 @@
 title: "grain"
 date: 2024-06-15
 layout: ../../../layouts/PostLayout.astro
+tags: ["poems"]
 ---
 
 You want a fervid love;  

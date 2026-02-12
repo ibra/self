@@ -2,6 +2,7 @@
 title: "a model of creation"
 date: 2025-03-11
 layout: ../../../layouts/PostLayout.astro
+tags: ["poems"]
 ---
 
 pandora opens her jar and reveals eight  

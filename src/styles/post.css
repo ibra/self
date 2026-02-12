@@ -10,3 +10,30 @@ img,
 video {
   @apply py-4 leading-snug;
 }
+
+/* Code blocks */
+pre {
+  @apply bg-slate-900 border border-slate-700 rounded-md p-4 my-4 overflow-x-auto;
+}
+
+code {
+  @apply font-mono text-sm text-slate-300;
+}
+
+p code {
+  @apply bg-slate-900 border border-slate-700 rounded px-1.5 py-0.5 text-sm;
+}
+
+/* Blockquotes (warnings) */
+blockquote {
+  @apply border-l-4 border-amber-500 pl-4 pr-4 py-3 my-4 rounded-r;
+  background-color: rgba(217, 119, 6, 0.1);
+}
+
+blockquote p {
+  @apply text-amber-200 mb-0;
+}
+
+blockquote strong {
+  @apply text-amber-400 font-bold;
+}

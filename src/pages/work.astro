@@ -19,24 +19,27 @@ const categories = [
     name: "games",
     items: [
       {
-        title: "FOGBOUND",
+        title: "fogbound",
         description:
-          "Narrative-driven psychological horror game set in a toxic, fog-ridden Lahore.",
+          "narrative-driven psychological horror game set in a toxic, fog-ridden lahore.",
         url: "https://store.steampowered.com/app/4140990/FOGBOUND/",
+        metadata: "2025, Steam",
         delay: 150,
       },
       {
-        title: "Pointblank",
+        title: "pointblank",
         description:
-          "Fast-paced twin-stick shooter where you have a single bullet.",
+          "fast-paced twin-stick shooter where you have a single bullet.",
         url: "https://store.steampowered.com/app/1221330/Pointblank",
+        metadata: "2020, Steam",
         delay: 250,
       },
       {
         title: "more... (itch.io)",
         description:
-          "Collection of various little games made for jams and competitions.",
+          "collection of various little games made for jams and competitions.",
         url: "https://ibrahh.itch.io",
+        metadata: "itch.io",
         delay: 350,
       },
     ],
@@ -47,65 +50,39 @@ const categories = [
       {
         title: "lachesis",
         description:
-          "Lightweight cross-platform time-tracking application written in Rust.",
+          "lightweight cross-platform time-tracking application written in rust.",
         url: "https://github.com/ibra/lachesis",
+        metadata: "2024, Rust",
         delay: 150,
       },
       {
         title: "snip.tf",
         description:
-          "A modern, minimalistic pastebin. Developed backend in Rust, deployed on the edge.",
+          "a modern, minimalistic pastebin. developed backend in rust, deployed on the edge.",
         url: "https://snip.tf/",
+        metadata: "2024, Rust",
         delay: 250,
       },
       {
-        title: "Ibralogue",
+        title: "ibralogue",
         description:
-          "Robust, extensible dialogue framework for the Unity game engine.",
+          "robust, extensible dialogue framework for the unity game engine.",
         url: "https://github.com/Ibralogue/Ibralogue",
+        metadata: "2021, C#",
         delay: 350,
-      },
-      {
-        title: "pseudocoding.net",
-        description: "Web-based compiler for the AL/GCSE Pseudocode standard.",
-        url: "https://pseudocoding.net",
-        delay: 450,
       },
     ],
   },
-  {
-    name: "poetry",
-    items: [
-      ...sortedPoetry.map((post, index) => ({
-        title: post.frontmatter.title,
-        description: new Date(post.frontmatter.date)
-          .toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
-          .replace(/,/, ""),
-        url: post.url,
-        delay: 150 + index * 100,
-      })),
-      {
-        title: "more...",
-        description: "view all poetry",
-        url: "/poetry",
-        delay: 150 + sortedPoetry.length * 100,
-      },
-    ],
-  }
 ];
 ---
 
-<Layout title="ibrahim hisham ~ work" padding="16" path="/work">
+<Layout title="ibrahim hisham ~ work" padding="32" path="/work">
   <Container>
     <Nav />
     <Heading title="work" styling="stagger-50" />
-    <h2 class="stagger-100 animate-fade text-slate-400 text-lg mb-5">
-      pick a category:
-    </h2>
+    <p class="stagger-100 animate-fade text-lg mb-5">
+      signals that slip out the noise.
+    </p>
 
     <div class="flex flex-wrap gap-3 mb-6" id="category-buttons">
       {
@@ -120,11 +97,11 @@ const categories = [
       }
     </div>
 
-    <div id="category-panels" class="relative w-full overflow-hidden">
+    <div id="category-panels" class="relative w-full overflow-hidden transition-all duration-300 ease-in-out">
       {
         categories.map((cat, index) => (
           <ul
-            class="category-panel absolute top-0 left-0 w-full flex flex-col gap-4 transition-opacity duration-500 ease-in-out"
+            class="category-panel absolute top-0 left-0 w-full flex flex-col transition-opacity duration-500 ease-in-out"
             style={`opacity: ${index === 0 ? "1" : "0"}; pointer-events: ${index === 0 ? "auto" : "none"}`}
             data-index={index}
           >
@@ -166,6 +143,16 @@ const categories = [
       }
 
       function setActive(index) {
+        // First, measure the target panel's height
+        const targetPanel = panels[index];
+        targetPanel.style.position = "static";
+        targetPanel.style.opacity = "1";
+        const targetHeight = targetPanel.offsetHeight;
+        targetPanel.style.position = "absolute";
+        
+        // Update container height smoothly
+        container.style.height = `${targetHeight}px`;
+
         buttons.forEach((btn, i) => {
           btn.classList.toggle("border-white", i === index);
           btn.classList.toggle("text-white", i === index);

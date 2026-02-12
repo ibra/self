@@ -2,6 +2,7 @@
 title: "it takes half a person to tango"
 date: 2024-08-01
 layout: ../../../layouts/PostLayout.astro
+tags: ["poems"]
 ---
 
 Not quite that Grief is immutable  

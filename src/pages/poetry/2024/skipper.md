@@ -2,6 +2,7 @@
 title: "skipper"
 date: 2024-10-26
 layout: ../../../layouts/PostLayout.astro
+tags: ["poems"]
 ---
 
 I am the water and I am it's stillness.  

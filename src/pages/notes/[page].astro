@@ -1,0 +1,61 @@
+---
+import Nav from "@components/Nav.astro";
+import Layout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+import CompactListItem from "@components/CompactListItem.astro";
+import Heading from "@components/Heading.astro";
+import Pagination from "@components/Pagination.astro";
+
+export async function getStaticPaths({ paginate }: any) {
+  const notePosts = await Astro.glob("./**/*.md");
+  const poetryPosts = await Astro.glob("../poetry/**/*.md");
+
+  const allPosts = [...notePosts, ...poetryPosts].map((post) => ({
+    ...post,
+    type: post.url?.includes("/poetry/") ? "poetry" : "note",
+  }));
+
+  const sortedPosts = allPosts.sort(
+    (a: any, b: any) =>
+      (new Date(b.frontmatter.date) as any) -
+      (new Date(a.frontmatter.date) as any)
+  );
+
+  return paginate(sortedPosts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title="ibrahim hisham ~ notes" padding="16" path="/notes">
+  <Container>
+    <Nav />
+    <Heading title="notes" styling="stagger-50" />
+    <p class="stagger-150 animate-fade text-lg mb-5">
+      thoughts, observations, and scattered reflections.
+    </p>
+
+    <ul class="list-none text-base animate-fade stagger-200">
+      {
+        page.data.map((post: any) => (
+          <CompactListItem
+            url={post.url}
+            title={post.frontmatter.title}
+            date={new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+            type={post.type}
+          />
+        ))
+      }
+    </ul>
+
+    <Pagination
+      currentPage={page.currentPage}
+      totalPages={page.lastPage}
+      basePath="/notes"
+    />
+  </Container>
+</Layout>

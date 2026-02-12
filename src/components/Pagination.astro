@@ -1,0 +1,37 @@
+---
+const { currentPage, totalPages, basePath } = Astro.props;
+---
+
+<div class="flex items-center justify-between mt-8 text-slate-400 animate-fade stagger-300">
+  <div>
+    {
+      currentPage > 1 ? (
+        <a
+          href={currentPage === 2 ? `${basePath}` : `${basePath}/${currentPage - 1}`}
+          class="text-slate-200 hover:text-slate-400 transition-colors"
+        >
+          ← previous
+        </a>
+      ) : (
+        <span class="text-slate-600">← previous</span>
+      )
+    }
+  </div>
+  <div class="text-sm">
+    page {currentPage} of {totalPages}
+  </div>
+  <div>
+    {
+      currentPage < totalPages ? (
+        <a
+          href={`${basePath}/${currentPage + 1}`}
+          class="text-slate-200 hover:text-slate-400 transition-colors"
+        >
+          next →
+        </a>
+      ) : (
+        <span class="text-slate-600">next →</span>
+      )
+    }
+  </div>
+</div>

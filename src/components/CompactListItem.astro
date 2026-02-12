@@ -1,0 +1,16 @@
+---
+const { title, date, url, type = "note" } = Astro.props;
+---
+
+<li class="group mb-3 animate-fade stagger-250">
+  <a
+    href={url}
+    class="flex items-baseline gap-3 text-slate-400 hover:text-slate-200 transition-colors no-underline"
+  >
+    <span class="text-slate-600 text-sm shrink-0">{type === "poetry" ? "o" : ">"}</span>
+    <span class="text-slate-200 group-hover:text-white transition-colors flex-1 lowercase">
+      {title}
+    </span>
+    <span class="text-slate-600 text-sm shrink-0 hidden sm:inline">{date}</span>
+  </a>
+</li>

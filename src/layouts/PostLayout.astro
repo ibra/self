@@ -40,12 +40,12 @@ import FloatingPixels from "@components/FloatingPixels.astro";
   <body class="bg-[#050505]">
     <FloatingPixels />
     <div
-      class={`flex min-h-screen items-center justify-center py-${Astro.props.padding} px-6 sm:px-6 lg:px-10 whitespace-nowrap`}
+      class={`flex min-h-screen items-center justify-center py-16 px-4 sm:px-6 lg:px-10`}
     >
-      <Container>
+      <div class="w-full max-w-xl min-h-[60vh] px-4 py-6 md:px-8 md:py-8 lg:px-10 overflow-x-auto">
         <Nav />
         <Heading title={frontmatter.title} />
-        <p class="stagger-100 animate-fade text-slate-400 text-lg mb-5 italic">
+        <p class="stagger-100 animate-fade text-slate-400 text-lg mb-3 italic">
           {
             new Date(frontmatter.date)
               .toLocaleDateString("en-US", {
@@ -56,8 +56,19 @@ import FloatingPixels from "@components/FloatingPixels.astro";
               .replace(/,/, "")
           }
         </p>
-        <slot />
-      </Container>
+        {frontmatter.tags && frontmatter.tags.length > 0 && (
+          <div class="flex gap-2 mb-5 stagger-150 animate-fade">
+            {frontmatter.tags.map((tag: string) => (
+              <span class="text-xs text-slate-500 border border-slate-700 rounded px-2 py-1">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+        <div class="poetry-content overflow-x-auto">
+          <slot />
+        </div>
+      </div>
     </div>
   </body>
 </html>

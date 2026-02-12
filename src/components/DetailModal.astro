@@ -1,18 +1,18 @@
 ---
-const { title, description, url, delay, target = "_blank" } = Astro.props;
+const { title, description, url, metadata, delay, target = "_blank" } = Astro.props;
 ---
 
 <li
-  class={`border-2 rounded-md px-5 py-4 mb-4 hover:text-slate-600 hover:border-slate-700 transition-colors animate-fade stagger-${delay} box-border w-full`}
+  class={`border-2 rounded-md px-5 py-4 mb-4 hover:border-slate-700 transition-colors animate-fade stagger-${delay} box-border w-full`}
 >
   <a
     href={url}
     target={target}
     rel="noreferrer"
-    class="block text-left no-underline w-full"
+    class="block text-left no-underline w-full group"
   >
-    <h2 class="font-bold text-2xl text-white break-words">{title}</h2>
-    <p class="text-lg text-slate-400 break-words overflow-wrap break-word">
+    <h2 class="font-bold text-xl text-slate-200 group-hover:text-white transition-colors break-words leading-tight !py-0">{title}</h2>
+    <p class="text-base text-slate-400 break-words leading-snug mt-1">
       {description}
     </p>
   </a>
