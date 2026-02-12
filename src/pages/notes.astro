@@ -1,0 +1,24 @@
+---
+import Nav from "@components/Nav.astro";
+import Layout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+import Heading from "@components/Heading.astro";
+---
+
+<Layout title="ibrahim hisham ~ notes" padding="16" path="/notes">
+  <Container>
+    <Nav />
+    <Heading title="notes" styling="stagger-50" />
+    <p class="stagger-150 animate-fade text-lg mb-5">
+      thoughts, observations, and scattered reflections.
+    </p>
+
+    <ul
+      class="grid grid-flow-row auto-rows-max gap-4 text-slate-400 antialised text-base animate-fade stagger-200"
+    >
+      <li class="text-slate-500 italic">
+        no notes yet. check back soon.
+      </li>
+    </ul>
+  </Container>
+</Layout>

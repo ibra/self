@@ -5,6 +5,15 @@ import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
 
+const poetryPosts = await Astro.glob("./poetry/**/*.md");
+const sortedPoetry = poetryPosts
+  .sort(
+    (a, b) =>
+      (new Date(b.frontmatter.date) as any) -
+      (new Date(a.frontmatter.date) as any)
+  )
+  .slice(0, 4);
+
 const categories = [
   {
     name: "games",
@@ -67,30 +76,23 @@ const categories = [
   {
     name: "poetry",
     items: [
+      ...sortedPoetry.map((post, index) => ({
+        title: post.frontmatter.title,
+        description: new Date(post.frontmatter.date)
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+          .replace(/,/, ""),
+        url: post.url,
+        delay: 150 + index * 100,
+      })),
       {
-        title: "a model of creation",
-        description: '"borrow a jar from god and repeat the shuffle."',
-        url: "https://www.patreon.com/posts/134168008",
-        delay: 150,
-      },
-      {
-        title: "Evening In Arles We Didn't Have",
-        description: '"The smoke cruel cut and in my sclera."',
-        url: "https://www.patreon.com/posts/134168153",
-        delay: 250,
-      },
-      {
-        title: "shadetinter",
-        description: '"Your curtains are opaque. I try to see through them."',
-        url: "https://www.patreon.com/posts/134166752",
-        delay: 350,
-      },
-      {
-        title: "It Takes Half A Person To Tango",
-        description:
-          '"Worms, the human benchmark, walking their miserable turn."',
-        url: "https://www.patreon.com/posts/134166691",
-        delay: 450,
+        title: "more...",
+        description: "view all poetry",
+        url: "/poetry",
+        delay: 150 + sortedPoetry.length * 100,
       },
     ],
   }
@@ -100,7 +102,7 @@ const categories = [
 <Layout title="ibrahim hisham ~ work" padding="16" path="/work">
   <Container>
     <Nav />
-    <Heading title="things" styling="stagger-50" />
+    <Heading title="work" styling="stagger-50" />
     <h2 class="stagger-100 animate-fade text-slate-400 text-lg mb-5">
       pick a category:
     </h2>

@@ -13,15 +13,29 @@ const currentPath = pathname.slice(1).replace("/", "");
     >
     <span aria-hidden="true" class="animate-fade stagger-200"></span>
     <a
-      href="/things"
+      href="/work"
       class={`animate-fade stagger-250 ${
-        currentPath === "things" ? "text-slate-500" : ""
-      }`}>things</a
+        currentPath === "work" ? "text-slate-500" : ""
+      }`}>work</a
     >
     <span aria-hidden="true" class="animate-fade stagger-300"></span>
     <a
-      href="/self"
+      href="/poetry"
       class={`animate-fade stagger-350 ${
+        currentPath.startsWith("poetry") ? "text-slate-500" : ""
+      }`}>poetry</a
+    >
+    <span aria-hidden="true" class="animate-fade stagger-400"></span>
+    <a
+      href="/notes"
+      class={`animate-fade stagger-450 ${
+        currentPath.startsWith("notes") ? "text-slate-500" : ""
+      }`}>notes</a
+    >
+    <span aria-hidden="true" class="animate-fade stagger-500"></span>
+    <a
+      href="/self"
+      class={`animate-fade stagger-550 ${
         currentPath === "self" ? "text-slate-500" : ""
       }`}>self</a
     >
