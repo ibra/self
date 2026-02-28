@@ -56,9 +56,14 @@ import FloatingPixels from "@components/FloatingPixels.astro";
               .replace(/,/, "")
           }
         </p>
-        {frontmatter.tags && frontmatter.tags.length > 0 && (
+        {(frontmatter.tags?.length > 0 || frontmatter.archive) && (
           <div class="flex gap-2 mb-5 stagger-150 animate-fade">
-            {frontmatter.tags.map((tag: string) => (
+            {frontmatter.archive && (
+              <span class="text-xs text-slate-200 border border-slate-100 rounded px-2 py-1">
+                archived
+              </span>
+            )}
+            {frontmatter.tags?.map((tag: string) => (
               <span class="text-xs text-slate-500 border border-slate-700 rounded px-2 py-1">
                 {tag}
               </span>
