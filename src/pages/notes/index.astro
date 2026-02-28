@@ -29,9 +29,9 @@ sortedPosts.forEach((post: any) => {
 
 const tags = ["all", ...Array.from(allTags).sort()];
 
-// Group posts by tag
+// Group posts by tag (exclude archived from "all")
 const postsByTag: Record<string, any[]> = {
-  all: sortedPosts,
+  all: sortedPosts.filter((post: any) => !post.frontmatter.archive),
 };
 
 allTags.forEach((tag) => {

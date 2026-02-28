@@ -10,10 +10,12 @@ export async function getStaticPaths({ paginate }: any) {
   const notePosts = await Astro.glob("./**/*.md");
   const poetryPosts = await Astro.glob("../poetry/**/*.md");
 
-  const allPosts = [...notePosts, ...poetryPosts].map((post) => ({
-    ...post,
-    type: post.url?.includes("/poetry/") ? "poetry" : "note",
-  }));
+  const allPosts = [...notePosts, ...poetryPosts]
+    .filter((post) => !post.frontmatter.archive)
+    .map((post) => ({
+      ...post,
+      type: post.url?.includes("/poetry/") ? "poetry" : "note",
+    }));
 
   const sortedPosts = allPosts.sort(
     (a: any, b: any) =>

@@ -7,11 +7,11 @@ tags: ["poems"]
 ---
 
 Tiny shards of glass  
-strewn across the windowsill  
-<br>
-Bloody hands are drawn  
-<br>
+strewn across the windowsill
+
+Bloody hands are drawn
+
 to bright skies and  
-clouds of summer seen  
-<br>
+clouds of summer seen
+
 through the cracked window.

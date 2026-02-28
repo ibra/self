@@ -8,7 +8,8 @@ import Pagination from "@components/Pagination.astro";
 
 export async function getStaticPaths({ paginate }: any) {
   const posts = await Astro.glob("./**/*.md");
-  const sortedPosts = posts.sort(
+  const filteredPosts = posts.filter((post: any) => !post.frontmatter.archive);
+  const sortedPosts = filteredPosts.sort(
     (a: any, b: any) =>
       (new Date(b.frontmatter.date) as any) -
       (new Date(a.frontmatter.date) as any)
