@@ -14,7 +14,7 @@ export async function get(context) {
 
   return rss({
     title: "ibrahim hisham ~ notes",
-    description: "an index of messily arranged blips.",
+    description: "some blips here and there.",
     site: context.site,
     items: items,
     customData: `<language>en-us</language>`,

@@ -4,6 +4,7 @@ description: "inspired by william carlos williams"
 date: 2023-07-09
 layout: ../../../layouts/PostLayout.astro
 tags: ["poems"]
+archive: true
 ---
 
 Tiny shards of glass  
