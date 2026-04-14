@@ -19,9 +19,10 @@ const sortedPosts = allPosts.sort(
     (new Date(a.frontmatter.date) as any)
 );
 
-// Extract all unique tags
+const nonArchivedPosts = sortedPosts.filter((post: any) => !post.frontmatter.archive);
+
 const allTags = new Set<string>();
-sortedPosts.forEach((post: any) => {
+nonArchivedPosts.forEach((post: any) => {
   if (post.frontmatter.tags) {
     post.frontmatter.tags.forEach((tag: string) => allTags.add(tag));
   }
@@ -29,13 +30,12 @@ sortedPosts.forEach((post: any) => {
 
 const tags = ["all", ...Array.from(allTags).sort()];
 
-// Group posts by tag (exclude archived from "all")
 const postsByTag: Record<string, any[]> = {
-  all: sortedPosts.filter((post: any) => !post.frontmatter.archive),
+  all: nonArchivedPosts,
 };
 
 allTags.forEach((tag) => {
-  postsByTag[tag] = sortedPosts.filter((post: any) =>
+  postsByTag[tag] = nonArchivedPosts.filter((post: any) =>
     post.frontmatter.tags?.includes(tag)
   );
 });

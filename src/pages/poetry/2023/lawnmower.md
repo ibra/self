@@ -6,11 +6,11 @@ tags: ["poems"]
 archive: true
 ---
 
-uneven pasture, would it kill to be kind?  
+uneven pasture, would it kill to be kind?
 step with step, pressed on concrete pavement.
 
-in gardens, with blades of grass shooting  
+in gardens, with blades of grass shooting
 out the ends: half-cut, and i'm the lawnmower.
 
-sweeping the shore, mopping up ocean floor:  
+sweeping the shore, mopping up ocean floor:
 Sisyphus would be proud.

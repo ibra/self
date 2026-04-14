@@ -6,6 +6,8 @@ import Nav from "@components/Nav.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
 import FloatingPixels from "@components/FloatingPixels.astro";
+
+const isPoetry = frontmatter.tags?.includes("poems");
 ---
 
 <html lang="en">
@@ -70,10 +72,57 @@ import FloatingPixels from "@components/FloatingPixels.astro";
             ))}
           </div>
         )}
-        <div class="post-content overflow-x-auto">
+        {isPoetry && (
+          <button
+            id="poetry-fit-toggle"
+            class="hidden text-xs px-3 py-1.5 mb-5 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
+          >
+            fit to screen
+          </button>
+        )}
+        <div class={`post-content overflow-x-auto ${isPoetry ? 'poetry' : ''}`}>
           <slot />
         </div>
       </div>
     </div>
+    {isPoetry && (
+      <script>
+        const toggle = document.getElementById('poetry-fit-toggle');
+        const content = document.querySelector('.post-content.poetry');
+        if (toggle && content) {
+          function checkOverflow() {
+            if (!content.classList.contains('fitted')) {
+              const overflows = content.scrollWidth > content.clientWidth;
+              toggle.classList.toggle('hidden', !overflows);
+            }
+          }
+
+          checkOverflow();
+          window.addEventListener('resize', checkOverflow);
+
+          toggle.addEventListener('click', () => {
+            const fitting = !content.classList.contains('fitted');
+            content.classList.toggle('fitted', fitting);
+            const paragraphs = content.querySelectorAll('p');
+
+            if (fitting) {
+              const ratio = content.clientWidth / content.scrollWidth;
+              const base = parseFloat(getComputedStyle(paragraphs[0]).fontSize);
+              const scaled = Math.floor(base * ratio * 100) / 100;
+              paragraphs.forEach(p => p.style.fontSize = scaled + 'px');
+            } else {
+              paragraphs.forEach(p => p.style.fontSize = '');
+            }
+
+            toggle.textContent = fitting ? 'original' : 'fit to screen';
+            toggle.classList.toggle('border-white', fitting);
+            toggle.classList.toggle('text-white', fitting);
+            toggle.classList.toggle('border-slate-600', !fitting);
+            toggle.classList.toggle('text-slate-400', !fitting);
+            if (!fitting) checkOverflow();
+          });
+        }
+      </script>
+    )}
   </body>
 </html>

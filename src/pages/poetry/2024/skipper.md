@@ -6,18 +6,18 @@ tags: ["poems"]
 archive: true
 ---
 
-I am the water and I am it's stillness.  
+I am the water and I am it's stillness.
 Seafoam slipping through the cracks.
 
 The kind that doesn't like to remember.
 
-No stagnancies, no ebbing beauty.  
+No stagnancies, no ebbing beauty.
 No calm after the storm— only Drench.
 
 Fountain orchestry. Puddle depth.
 
-Short dip. Luminescent flash.  
+Short dip. Luminescent flash.
 Shone the brightest. Went out the fastest.
 
-Settled tide.  
+Settled tide.
 No use to the skipper.

@@ -6,19 +6,19 @@ tags: ["poems"]
 archive: true
 ---
 
-Loose knot. Overflowing  
-cup: yards of rope dripping  
-out an incessant rim of Feel.
+Loose knot. Overflowing
+cup: yards of rope dripping
+out an incessant rim of hate.
 
-What wreck? What salvage?  
-Tore half the tickets to  
+What wreck? What salvage?
+Tore half the tickets to
 the longest train.
 
-Hire a conductor and feel  
-smatterings of alive  
-in the illusion of  
+Hire a conductor and feel
+smatterings of alive
+in the illusion of
 his expertise.
 
-Terrible at precision tools  
-and gauging the anatomy of  
+Terrible at precision tools
+and gauging the anatomy of
 his own decisions.

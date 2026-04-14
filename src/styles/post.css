@@ -2,6 +2,13 @@
   @apply mb-5;
 }
 
+.post-content.poetry p {
+  white-space: pre;
+  @apply mb-8;
+}
+
+
+
 h2 {
   @apply font-bold text-base text-xl antialiased py-4;
 }
