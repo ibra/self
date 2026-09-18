@@ -1,0 +1,174 @@
+---
+---
+<div class="fixed inset-0 pointer-events-none" id="star-field"></div>
+<script>
+  interface Star {
+    x: number;
+    y: number;
+    depth: number;
+    phase: number;
+    rate: number;
+    element?: HTMLDivElement;
+  }
+
+  const key = "star-field";
+  const maxAge = 60000;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  class StarField {
+    private container: HTMLElement;
+    private stars: Star[] = [];
+    private frame = 0;
+    private last = 0;
+    private time = 0;
+
+    constructor(container: HTMLElement) {
+      this.container = container;
+
+      const target = this.density();
+      this.stars = this.restore().slice(0, target);
+
+      while (this.stars.length < target) {
+        this.stars.push(this.spawn(Math.random()));
+      }
+
+      this.stars.forEach((star) => this.mount(star));
+      this.render();
+      this.listen();
+
+      if (!reduced.matches) this.start();
+    }
+
+    private density() {
+      const area = window.innerWidth * window.innerHeight;
+      return Math.max(18, Math.min(90, Math.round(area / 26000)));
+    }
+
+    private spawn(y: number): Star {
+      return {
+        x: Math.random(),
+        y,
+        depth: Math.random(),
+        phase: Math.random() * Math.PI * 2,
+        rate: 0.4 + Math.random() * 1.2,
+      };
+    }
+
+    private mount(star: Star) {
+      const size = star.depth < 0.4 ? 1 : star.depth < 0.75 ? 2 : 3;
+      const element = document.createElement("div");
+
+      element.className = "absolute top-0 left-0 bg-slate-200";
+      element.style.width = `${size}px`;
+      element.style.height = `${size}px`;
+      element.style.willChange = "transform, opacity";
+
+      star.element = element;
+      this.container.appendChild(element);
+    }
+
+    private render() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      this.stars.forEach((star) => {
+        if (!star.element) return;
+
+        const sway =
+          Math.sin(this.time * 0.0003 * star.rate + star.phase) *
+          (2 + star.depth * 8);
+        const glow = Math.sin(this.time * 0.001 * star.rate + star.phase);
+
+        star.element.style.transform = `translate3d(${
+          star.x * width + sway
+        }px, ${star.y * height}px, 0)`;
+        star.element.style.opacity = `${
+          0.14 + star.depth * 0.2 + glow * (0.05 + star.depth * 0.08)
+        }`;
+      });
+    }
+
+    private step = (now: number) => {
+      const delta = Math.min(now - this.last, 100);
+      const height = window.innerHeight;
+
+      this.last = now;
+      this.time += delta;
+
+      this.stars.forEach((star) => {
+        star.y -= (((4 + star.depth * 18) * delta) / 1000 / height);
+
+        if (star.y < -0.02) {
+          star.y = 1.02;
+          star.x = Math.random();
+        }
+      });
+
+      this.render();
+      this.frame = requestAnimationFrame(this.step);
+    };
+
+    private start() {
+      this.last = performance.now();
+      this.frame = requestAnimationFrame(this.step);
+    }
+
+    private stop() {
+      if (this.frame) cancelAnimationFrame(this.frame);
+      this.frame = 0;
+    }
+
+    private save() {
+      const stars = this.stars.map(({ x, y, depth, phase, rate }) => ({
+        x,
+        y,
+        depth,
+        phase,
+        rate,
+      }));
+
+      try {
+        sessionStorage.setItem(
+          key,
+          JSON.stringify({ stars, timestamp: Date.now() })
+        );
+      } catch (e) {}
+    }
+
+    private restore(): Star[] {
+      try {
+        const saved = sessionStorage.getItem(key);
+        if (!saved) return [];
+
+        const state = JSON.parse(saved);
+        if (Date.now() - state.timestamp > maxAge) return [];
+
+        return state.stars;
+      } catch (e) {
+        return [];
+      }
+    }
+
+    private listen() {
+      window.addEventListener("resize", () => this.render());
+      window.addEventListener("pagehide", () => this.save());
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          this.stop();
+          this.save();
+        } else if (!reduced.matches) {
+          this.start();
+        }
+      });
+
+      reduced.addEventListener("change", () => {
+        this.stop();
+        if (!reduced.matches) this.start();
+      });
+    }
+  }
+
+  const container = document.getElementById("star-field");
+  if (container) new StarField(container as HTMLElement);
+</script>

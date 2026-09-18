@@ -5,7 +5,7 @@ import "../styles/post.css";
 import Nav from "@components/Nav.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
-import FloatingPixels from "@components/FloatingPixels.astro";
+import StarField from "@components/StarField.astro";
 import Head from "@components/Head.astro";
 import PostNav from "@components/PostNav.astro";
 import { excerpt } from "../lib/excerpt.js";
@@ -38,7 +38,7 @@ const description = frontmatter.description ?? excerpt(rawContent());
     date={new Date(frontmatter.date).toISOString()}
   />
   <body class="bg-[#050505]">
-    <FloatingPixels />
+    <StarField />
     <div
       class={`flex min-h-screen items-center justify-center py-16 px-4 sm:px-6 lg:px-10`}
     >

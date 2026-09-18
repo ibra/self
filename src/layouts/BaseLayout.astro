@@ -1,5 +1,5 @@
 ---
-import FloatingPixels from "@components/FloatingPixels.astro";
+import StarField from "@components/StarField.astro";
 import Head from "@components/Head.astro";
 import "../styles/global.css";
 ---
@@ -8,7 +8,7 @@ import "../styles/global.css";
   <Head title={Astro.props.title} />
 
   <body class="bg-[#050505]">
-    <FloatingPixels />
+    <StarField />
     <div class="flex min-h-screen items-center justify-center py-16 px-4 lg:px-8">
       <slot />
     </div>
