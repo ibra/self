@@ -4,6 +4,8 @@ import Nav from "@components/Nav.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
+import TabPanels from "@components/TabPanels.astro";
+import TabPanel from "@components/TabPanel.astro";
 
 const poetryPosts = await Astro.glob("./poetry/**/*.md");
 const sortedPoetry = poetryPosts
@@ -84,110 +86,23 @@ const categories = [
       trying to find signal.
     </p>
 
-    <div class="flex flex-wrap gap-3 mb-6" id="category-buttons">
+    <TabPanels items={categories.map((cat) => cat.name)}>
       {
         categories.map((cat, index) => (
-          <button
-            class="category-btn text-sm md:text-base px-4 py-2 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
-            data-index={index}
-          >
-            {cat.name}
-          </button>
+          <TabPanel active={index === 0}>
+            <ul class="flex flex-col">
+              {cat.items.map((item) => (
+                <DetailModal
+                  title={item.title}
+                  description={item.description}
+                  url={item.url}
+                  delay={item.delay}
+                />
+              ))}
+            </ul>
+          </TabPanel>
         ))
       }
-    </div>
-
-    <div id="category-panels" class="relative w-full overflow-hidden transition-all duration-300 ease-in-out">
-      {
-        categories.map((cat, index) => (
-          <ul
-            class="category-panel absolute top-0 left-0 w-full flex flex-col transition-opacity duration-500 ease-in-out"
-            style={`opacity: ${index === 0 ? "1" : "0"}; pointer-events: ${index === 0 ? "auto" : "none"}`}
-            data-index={index}
-          >
-            {cat.items.map((item) => (
-              <DetailModal
-                title={item.title}
-                description={item.description}
-                url={item.url}
-                delay={item.delay}
-              />
-            ))}
-          </ul>
-        ))
-      }
-    </div>
-
-    <script type="module">
-      const buttons = document.querySelectorAll(".category-btn");
-      const panels = document.querySelectorAll(".category-panel");
-      const container = document.getElementById("category-panels");
-      let active = 0;
-
-      function calculateMaxHeight() {
-        let maxHeight = 0;
-        panels.forEach((panel) => {
-          // temporarily show panel to measure its height
-          panel.style.position = "static";
-          panel.style.opacity = "1";
-          panel.style.pointerEvents = "auto";
-          const height = panel.offsetHeight;
-          maxHeight = Math.max(maxHeight, height);
-
-          // hide it again
-          panel.style.position = "absolute";
-          panel.style.opacity = panel.dataset.index == active ? "1" : "0";
-          panel.style.pointerEvents = panel.dataset.index == active ? "auto" : "none";
-        });
-        container.style.height = `${maxHeight}px`;
-      }
-
-      function setActive(index) {
-        // First, measure the target panel's height
-        const targetPanel = panels[index];
-        targetPanel.style.position = "static";
-        targetPanel.style.opacity = "1";
-        const targetHeight = targetPanel.offsetHeight;
-        targetPanel.style.position = "absolute";
-        
-        // Update container height smoothly
-        container.style.height = `${targetHeight}px`;
-
-        buttons.forEach((btn, i) => {
-          btn.classList.toggle("border-white", i === index);
-          btn.classList.toggle("text-white", i === index);
-          btn.classList.toggle("border-slate-600", i !== index);
-          btn.classList.toggle("text-slate-400", i !== index);
-        });
-
-        panels.forEach((panel, i) => {
-          if (i === index) {
-            panel.style.opacity = "1";
-            panel.style.pointerEvents = "auto";
-          } else {
-            panel.style.opacity = "0";
-            panel.style.pointerEvents = "none";
-          }
-        });
-      }
-
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const index = parseInt(btn.dataset.index);
-          if (index === active) return;
-          setActive(index);
-          active = index;
-        });
-      });
-
-      // Initialize after content loads
-      window.addEventListener("load", () => {
-        calculateMaxHeight();
-        setActive(0);
-      });
-
-      // Recalculate on window resize
-      window.addEventListener("resize", calculateMaxHeight);
-    </script>
+    </TabPanels>
   </Container>
 </Layout>

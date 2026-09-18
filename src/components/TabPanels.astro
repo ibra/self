@@ -1,0 +1,104 @@
+---
+interface Props {
+  items: string[];
+  defaultIndex?: number;
+  syncHash?: boolean;
+}
+
+const { items, defaultIndex = 0, syncHash = false } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-3 mb-6">
+  {
+    items.map((item, index) => (
+      <button
+        class={`tab-btn text-sm md:text-base px-4 py-2 rounded border hover:text-white hover:border-white transition-all duration-300 ${
+          index === defaultIndex
+            ? "border-white text-white"
+            : "border-slate-600 text-slate-400"
+        }`}
+        data-index={index}
+        data-tab={item}
+      >
+        {item}
+      </button>
+    ))
+  }
+</div>
+
+<div
+  class="tab-panels relative w-full overflow-hidden transition-all duration-300 ease-in-out"
+  data-default-index={defaultIndex}
+  data-sync-hash={syncHash ? "true" : undefined}
+>
+  <slot />
+</div>
+
+<script>
+  const container = document.querySelector(".tab-panels") as HTMLElement;
+
+  if (container) {
+    const panels = Array.from(
+      container.querySelectorAll(".tab-panel")
+    ) as HTMLElement[];
+    const buttons = Array.from(
+      document.querySelectorAll(".tab-btn")
+    ) as HTMLElement[];
+    const syncHash = container.dataset.syncHash === "true";
+    let active = Number(container.dataset.defaultIndex) || 0;
+
+    panels.forEach((panel) => {
+      panel.classList.remove("relative");
+      panel.classList.add("absolute", "top-0", "left-0");
+    });
+
+    function fitHeight() {
+      container.style.height = `${panels[active].offsetHeight}px`;
+    }
+
+    function setActive(index: number) {
+      active = index;
+
+      buttons.forEach((btn, i) => {
+        btn.classList.toggle("border-white", i === index);
+        btn.classList.toggle("text-white", i === index);
+        btn.classList.toggle("border-slate-600", i !== index);
+        btn.classList.toggle("text-slate-400", i !== index);
+      });
+
+      panels.forEach((panel, i) => {
+        panel.style.opacity = i === index ? "1" : "0";
+        panel.style.pointerEvents = i === index ? "auto" : "none";
+      });
+
+      fitHeight();
+    }
+
+    function indexFromHash() {
+      const tab = decodeURIComponent(location.hash.slice(1));
+      return buttons.findIndex((btn) => btn.dataset.tab === tab);
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const index = Number(btn.dataset.index);
+        if (index === active) return;
+        setActive(index);
+        if (syncHash) history.replaceState(null, "", `#${btn.dataset.tab}`);
+      });
+    });
+
+    if (syncHash) {
+      window.addEventListener("hashchange", () => {
+        const index = indexFromHash();
+        if (index !== -1 && index !== active) setActive(index);
+      });
+    }
+
+    window.addEventListener("resize", fitHeight);
+    panels.forEach((panel) => new ResizeObserver(fitHeight).observe(panel));
+
+    const fromHash = syncHash ? indexFromHash() : -1;
+    setActive(fromHash === -1 ? active : fromHash);
+  }
+</script>

@@ -4,6 +4,8 @@ import Layout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import CompactListItem from "@components/CompactListItem.astro";
 import Heading from "@components/Heading.astro";
+import TabPanels from "@components/TabPanels.astro";
+import TabPanel from "@components/TabPanel.astro";
 
 const notePosts = await Astro.glob("./**/*.md");
 const poetryPosts = await Astro.glob("../poetry/**/*.md");
@@ -52,118 +54,30 @@ allTags.forEach((tag) => {
       some blips here and there.
     </p>
 
-    <div class="flex flex-wrap gap-3 mb-6" id="tag-buttons">
+    <TabPanels items={tags} defaultIndex={defaultIndex} syncHash>
       {
         tags.map((tag, index) => (
-          <button
-            class="tag-btn text-sm md:text-base px-4 py-2 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
-            data-index={index}
-          >
-            {tag}
-          </button>
+          <TabPanel active={index === defaultIndex}>
+            <ul class="list-none text-base">
+              {postsByTag[tag].map((post: any) => (
+                <CompactListItem
+                  url={post.url}
+                  title={post.frontmatter.title}
+                  date={new Date(post.frontmatter.date).toLocaleDateString(
+                    "en-US",
+                    {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    }
+                  )}
+                  type={post.type}
+                />
+              ))}
+            </ul>
+          </TabPanel>
         ))
       }
-    </div>
-
-    <div
-      id="tag-panels"
-      class="relative w-full overflow-hidden transition-all duration-300 ease-in-out"
-      data-default-index={defaultIndex}
-    >
-      {
-        tags.map((tag, index) => (
-          <ul
-            class="tag-panel absolute top-0 left-0 w-full list-none text-base transition-opacity duration-500 ease-in-out"
-            style={`opacity: ${index === defaultIndex ? "1" : "0"}; pointer-events: ${index === defaultIndex ? "auto" : "none"}`}
-            data-index={index}
-          >
-            {postsByTag[tag].map((post: any) => (
-              <CompactListItem
-                url={post.url}
-                title={post.frontmatter.title}
-                date={new Date(post.frontmatter.date).toLocaleDateString(
-                  "en-US",
-                  {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  }
-                )}
-                type={post.type}
-              />
-            ))}
-          </ul>
-        ))
-      }
-    </div>
-
-    <script type="module">
-      const buttons = document.querySelectorAll(".tag-btn");
-      const panels = document.querySelectorAll(".tag-panel");
-      const container = document.getElementById("tag-panels");
-      let active = parseInt(container.dataset.defaultIndex) || 0;
-
-      function calculateMaxHeight() {
-        let maxHeight = 0;
-        panels.forEach((panel) => {
-          panel.style.position = "static";
-          panel.style.opacity = "1";
-          panel.style.pointerEvents = "auto";
-          const height = panel.offsetHeight;
-          maxHeight = Math.max(maxHeight, height);
-
-          panel.style.position = "absolute";
-          panel.style.opacity = panel.dataset.index == active ? "1" : "0";
-          panel.style.pointerEvents =
-            panel.dataset.index == active ? "auto" : "none";
-        });
-        container.style.height = `${maxHeight}px`;
-      }
-
-      function setActive(index) {
-        // First, measure the target panel's height
-        const targetPanel = panels[index];
-        targetPanel.style.position = "static";
-        targetPanel.style.opacity = "1";
-        const targetHeight = targetPanel.offsetHeight;
-        targetPanel.style.position = "absolute";
-        
-        // Update container height smoothly
-        container.style.height = `${targetHeight}px`;
-
-        buttons.forEach((btn, i) => {
-          btn.classList.toggle("border-white", i === index);
-          btn.classList.toggle("text-white", i === index);
-          btn.classList.toggle("border-slate-600", i !== index);
-          btn.classList.toggle("text-slate-400", i !== index);
-        });
-
-        panels.forEach((panel, i) => {
-          if (i === index) {
-            panel.style.opacity = "1";
-            panel.style.pointerEvents = "auto";
-          } else {
-            panel.style.opacity = "0";
-            panel.style.pointerEvents = "none";
-          }
-        });
-      }
-
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const index = parseInt(btn.dataset.index);
-          if (index === active) return;
-          setActive(index);
-          active = index;
-        });
-      });
-
-      window.addEventListener("load", () => {
-        calculateMaxHeight();
-        setActive(active);
-      });
-
-      window.addEventListener("resize", calculateMaxHeight);
-    </script>
+    </TabPanels>
   </Container>
 </Layout>
