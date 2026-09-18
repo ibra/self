@@ -31,16 +31,6 @@ nav span {
   background: #ffffff1c;
 }
 
-.py-48 {
-  padding-top: 12rem;
-  padding-bottom: 12rem;
-}
-
-.py-64 {
-  padding-top: 16rem;
-  padding-bottom: 16rem;
-}
-
 .stagger-50 {
   animation-delay: 50ms;
 }

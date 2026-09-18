@@ -1,44 +1,24 @@
 ---
-const { frontmatter } = Astro.props;
+const { frontmatter, rawContent } = Astro.props;
 import "../styles/global.css";
 import "../styles/post.css";
 import Nav from "@components/Nav.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
 import FloatingPixels from "@components/FloatingPixels.astro";
+import Head from "@components/Head.astro";
+import { excerpt } from "../lib/excerpt.js";
 
 const isPoetry = frontmatter.tags?.includes("poems");
+const description = frontmatter.description ?? excerpt(rawContent());
 ---
 
 <html lang="en">
-  <head>
-    <title>{Astro.props.title}</title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="robots" content="follow, index" />
-    <meta
-      content="ibrahim hisham. programmer and hobbyist independent game developer. Rust, C#, Typescript."
-      name="description"
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="ibrahim hisham" />
-    <meta
-      property="og:description"
-      content="ibrahim hisham. programmer & hobbyist independent game developer. Rust, C#, Typescript."
-    />
-    <meta property="og:title" content={Astro.props.title} />
-    <meta
-      property="og:image"
-      content="https://avatars.githubusercontent.com/u/61324615?v=4"
-    />
-    <meta name="theme-color" content="#050505" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+  <Head
+    title={`${frontmatter.title} ~ ibrahim hisham`}
+    description={description}
+    date={new Date(frontmatter.date).toISOString()}
+  />
   <body class="bg-[#050505]">
     <FloatingPixels />
     <div
