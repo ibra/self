@@ -30,6 +30,9 @@ nonArchivedPosts.forEach((post: any) => {
 
 const tags = ["all", ...Array.from(allTags).sort()];
 
+const defaultTag = "computing";
+const defaultIndex = tags.indexOf(defaultTag) === -1 ? 0 : tags.indexOf(defaultTag);
+
 const postsByTag: Record<string, any[]> = {
   all: nonArchivedPosts,
 };
@@ -62,12 +65,16 @@ allTags.forEach((tag) => {
       }
     </div>
 
-    <div id="tag-panels" class="relative w-full overflow-hidden transition-all duration-300 ease-in-out">
+    <div
+      id="tag-panels"
+      class="relative w-full overflow-hidden transition-all duration-300 ease-in-out"
+      data-default-index={defaultIndex}
+    >
       {
         tags.map((tag, index) => (
           <ul
             class="tag-panel absolute top-0 left-0 w-full list-none text-base transition-opacity duration-500 ease-in-out"
-            style={`opacity: ${index === 0 ? "1" : "0"}; pointer-events: ${index === 0 ? "auto" : "none"}`}
+            style={`opacity: ${index === defaultIndex ? "1" : "0"}; pointer-events: ${index === defaultIndex ? "auto" : "none"}`}
             data-index={index}
           >
             {postsByTag[tag].map((post: any) => (
@@ -94,7 +101,7 @@ allTags.forEach((tag) => {
       const buttons = document.querySelectorAll(".tag-btn");
       const panels = document.querySelectorAll(".tag-panel");
       const container = document.getElementById("tag-panels");
-      let active = 0;
+      let active = parseInt(container.dataset.defaultIndex) || 0;
 
       function calculateMaxHeight() {
         let maxHeight = 0;
@@ -153,7 +160,7 @@ allTags.forEach((tag) => {
 
       window.addEventListener("load", () => {
         calculateMaxHeight();
-        setActive(0);
+        setActive(active);
       });
 
       window.addEventListener("resize", calculateMaxHeight);
