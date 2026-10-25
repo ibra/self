@@ -5,8 +5,7 @@ import "../styles/post.css";
 import Nav from "@components/Nav.astro";
 import Container from "@components/Container.astro";
 import Heading from "@components/Heading.astro";
-import StarField from "@components/StarField.astro";
-import Head from "@components/Head.astro";
+import Layout from "@layouts/BaseLayout.astro";
 import { excerpt } from "../lib/excerpt.js";
 
 const isPoetry = frontmatter.tags?.includes("poems");
@@ -14,102 +13,94 @@ const isPoetry = frontmatter.tags?.includes("poems");
 const description = frontmatter.description ?? excerpt(rawContent());
 ---
 
-<html lang="en">
-  <Head
-    title={`${frontmatter.title} ~ ibrahim hisham`}
-    description={description}
-    date={new Date(frontmatter.date).toISOString()}
-  />
-  <body class="bg-[#050505]">
-    <StarField />
-    <div
-      class={`flex min-h-screen items-center justify-center py-16 px-4 sm:px-6 lg:px-10`}
-    >
-      <div class="w-full max-w-xl min-h-[60vh] px-4 py-6 md:px-8 md:py-8 lg:px-10 overflow-x-auto">
-        <Nav />
-        <Heading title={frontmatter.title} />
-        <p class="stagger-100 animate-fade text-slate-400 text-lg mb-3 italic">
-          {
-            new Date(frontmatter.date)
-              .toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-              .replace(/,/, "")
-          }
-        </p>
-        {(frontmatter.tags?.length > 0 || frontmatter.archive) && (
-          <div class="flex gap-2 mb-5 stagger-150 animate-fade">
-            {frontmatter.archive && (
-              <span class="text-xs text-slate-200 border border-slate-100 rounded px-2 py-1">
-                archived
-              </span>
-            )}
-            {frontmatter.tags?.map((tag: string) => (
-              <span class="text-xs text-slate-500 border border-slate-700 rounded px-2 py-1">
-                {tag}
-              </span>
-            ))}
-          </div>
+<Layout
+  title={`${frontmatter.title} ~ ibrahim hisham`}
+  description={description}
+  date={new Date(frontmatter.date).toISOString()}
+>
+  <Container class="overflow-x-auto">
+    <Nav />
+    <Heading title={frontmatter.title} />
+    <p class="stagger-100 animate-fade text-slate-400 text-lg mb-3 italic">
+      {
+        new Date(frontmatter.date)
+          .toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+          .replace(/,/, "")
+      }
+    </p>
+    {(frontmatter.tags?.length > 0 || frontmatter.archive) && (
+      <div class="flex gap-2 mb-5 stagger-150 animate-fade">
+        {frontmatter.archive && (
+          <span class="text-xs text-slate-200 border border-slate-100 rounded px-2 py-1">
+            archived
+          </span>
         )}
-        {isPoetry && (
-          <button
-            id="poetry-fit-toggle"
-            class="hidden text-xs px-3 py-1.5 mb-5 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
-          >
-            fit to screen
-          </button>
-        )}
-        <div class={`post-content overflow-x-auto ${isPoetry ? 'poetry' : ''}`}>
-          <slot />
-        </div>
-        <a
-          href="/notes"
-          class="inline-block mt-10 text-sm text-slate-200 hover:text-slate-400 transition-colors animate-fade stagger-300"
-        >
-          ← back to notes
-        </a>
+        {frontmatter.tags?.map((tag: string) => (
+          <span class="text-xs text-slate-500 border border-slate-700 rounded px-2 py-1">
+            {tag}
+          </span>
+        ))}
       </div>
-    </div>
+    )}
     {isPoetry && (
-      <script>
-        const toggle = document.getElementById('poetry-fit-toggle');
-        const content = document.querySelector('.post-content.poetry');
-        if (toggle && content) {
-          function checkOverflow() {
-            if (!content.classList.contains('fitted')) {
-              const overflows = content.scrollWidth > content.clientWidth;
-              toggle.classList.toggle('hidden', !overflows);
-            }
+      <button
+        id="poetry-fit-toggle"
+        class="hidden text-xs px-3 py-1.5 mb-5 rounded border border-slate-600 text-slate-400 hover:text-white hover:border-white transition-all duration-300"
+      >
+        fit to screen
+      </button>
+    )}
+    <div class={`post-content overflow-x-auto ${isPoetry ? 'poetry' : ''}`}>
+      <slot />
+    </div>
+    <a
+      href="/notes"
+      class="inline-block mt-10 text-sm text-slate-200 hover:text-slate-400 transition-colors animate-fade stagger-300"
+    >
+      ← back to notes
+    </a>
+  </Container>
+  {isPoetry && (
+    <script>
+      const toggle = document.getElementById('poetry-fit-toggle');
+      const content = document.querySelector('.post-content.poetry');
+      if (toggle && content) {
+        function checkOverflow() {
+          if (!content.classList.contains('fitted')) {
+            const overflows = content.scrollWidth > content.clientWidth;
+            toggle.classList.toggle('hidden', !overflows);
+          }
+        }
+
+        checkOverflow();
+        window.addEventListener('resize', checkOverflow);
+
+        toggle.addEventListener('click', () => {
+          const fitting = !content.classList.contains('fitted');
+          content.classList.toggle('fitted', fitting);
+          const paragraphs = content.querySelectorAll('p');
+
+          if (fitting) {
+            const ratio = content.clientWidth / content.scrollWidth;
+            const base = parseFloat(getComputedStyle(paragraphs[0]).fontSize);
+            const scaled = Math.floor(base * ratio * 100) / 100;
+            paragraphs.forEach(p => p.style.fontSize = scaled + 'px');
+          } else {
+            paragraphs.forEach(p => p.style.fontSize = '');
           }
 
-          checkOverflow();
-          window.addEventListener('resize', checkOverflow);
-
-          toggle.addEventListener('click', () => {
-            const fitting = !content.classList.contains('fitted');
-            content.classList.toggle('fitted', fitting);
-            const paragraphs = content.querySelectorAll('p');
-
-            if (fitting) {
-              const ratio = content.clientWidth / content.scrollWidth;
-              const base = parseFloat(getComputedStyle(paragraphs[0]).fontSize);
-              const scaled = Math.floor(base * ratio * 100) / 100;
-              paragraphs.forEach(p => p.style.fontSize = scaled + 'px');
-            } else {
-              paragraphs.forEach(p => p.style.fontSize = '');
-            }
-
-            toggle.textContent = fitting ? 'original' : 'fit to screen';
-            toggle.classList.toggle('border-white', fitting);
-            toggle.classList.toggle('text-white', fitting);
-            toggle.classList.toggle('border-slate-600', !fitting);
-            toggle.classList.toggle('text-slate-400', !fitting);
-            if (!fitting) checkOverflow();
-          });
-        }
-      </script>
-    )}
-  </body>
-</html>
+          toggle.textContent = fitting ? 'original' : 'fit to screen';
+          toggle.classList.toggle('border-white', fitting);
+          toggle.classList.toggle('text-white', fitting);
+          toggle.classList.toggle('border-slate-600', !fitting);
+          toggle.classList.toggle('text-slate-400', !fitting);
+          if (!fitting) checkOverflow();
+        });
+      }
+    </script>
+  )}
+</Layout>

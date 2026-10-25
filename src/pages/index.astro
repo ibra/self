@@ -1,14 +1,16 @@
 ---
-import FloatingPixels from "@components/FloatingPixels.astro";
 import Heading from "@components/Heading.astro";
 import Nav from "@components/Nav.astro";
+import Container from "@components/Container.astro";
 import Layout from "@layouts/BaseLayout.astro";
 ---
 
-<Layout title="ibrahim hisham">
-  <div class="w-full max-w-md px-6 py-6 rounded-md">
+<Layout title="ibrahim hisham" centered>
+  <Container>
     <img
       src="https://avatars.githubusercontent.com/u/61324615?s=400&u=cd5a3ad6174065373219381434f09a76525f7bde&v=4"
+      width="192"
+      height="192"
       class="w-48 rounded-md animate-fade stagger-50"
       alt="profile picture"
       draggable="false"
@@ -27,5 +29,5 @@ import Layout from "@layouts/BaseLayout.astro";
     </p>
     <br />
     <Nav />
-  </div>
+  </Container>
 </Layout>

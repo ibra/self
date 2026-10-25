@@ -2,14 +2,27 @@
 import StarField from "@components/StarField.astro";
 import Head from "@components/Head.astro";
 import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: string;
+  centered?: boolean;
+}
+
+const { title, description, date, centered = false } = Astro.props;
 ---
 
 <html lang="en">
-  <Head title={Astro.props.title} />
+  <Head title={title} description={description} date={date} />
 
   <body class="bg-[#050505]">
     <StarField />
-    <div class="flex min-h-screen items-center justify-center py-16 px-4 lg:px-8">
+    <div
+      class={`flex min-h-screen justify-center px-4 lg:px-8 ${
+        centered ? "items-center py-16" : "items-start pt-4 pb-16 md:pt-[15vh]"
+      }`}
+    >
       <slot />
     </div>
   </body>
