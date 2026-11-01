@@ -1,9 +1,6 @@
 ---
 title: "Breakfast"
 date: 2024-08-10
-layout: ../../../layouts/PostLayout.astro
-tags: ["poems"]
-archive: false
 ---
 
 What he is afraid of is not die

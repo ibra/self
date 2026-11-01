@@ -1,8 +1,6 @@
 ---
 title: "lawnmower"
 date: 2023-08-04
-layout: ../../../layouts/PostLayout.astro
-tags: ["poems"]
 archive: true
 ---
 

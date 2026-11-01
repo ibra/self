@@ -1,9 +1,6 @@
 ---
 title: "Chinese Whisper"
 date: 2026-04-18
-layout: ../../../layouts/PostLayout.astro
-tags: ["poems"]
-archive: false
 ---
 
 The wind is crowded with shapes

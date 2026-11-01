@@ -1,8 +1,6 @@
 ---
 title: "The Longest Train"
 date: 2024-10-18
-layout: ../../../layouts/PostLayout.astro
-tags: ["poems"]
 archive: true
 ---
 
