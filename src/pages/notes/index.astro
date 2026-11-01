@@ -30,13 +30,20 @@ nonArchivedPosts.forEach((post: any) => {
   }
 });
 
-const tags = ["all", ...Array.from(allTags).sort()];
+// poetry is kept apart: it sits last, behind a divider, and isn't counted in "all".
+const tags = [
+  "all",
+  ...Array.from(allTags)
+    .filter((tag) => tag !== "poetry")
+    .sort(),
+  ...(allTags.has("poetry") ? ["poetry"] : []),
+];
 
 const defaultIndex = 0;
 
 const postsByTag: Record<string, any[]> = {
   all: nonArchivedPosts.filter(
-    (post: any) => !post.frontmatter.tags?.includes("poems")
+    (post: any) => !post.frontmatter.tags?.includes("poetry")
   ),
 };
 
@@ -55,7 +62,12 @@ allTags.forEach((tag) => {
       some blips from the void.
     </p>
 
-    <TabPanels items={tags} defaultIndex={defaultIndex} syncHash>
+    <TabPanels
+      items={tags}
+      defaultIndex={defaultIndex}
+      divideBefore={tags.indexOf("poetry")}
+      syncHash
+    >
       {
         tags.map((tag, index) => (
           <TabPanel active={index === defaultIndex}>

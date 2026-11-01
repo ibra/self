@@ -8,7 +8,7 @@ import Heading from "@components/Heading.astro";
 import Layout from "@layouts/BaseLayout.astro";
 import { excerpt } from "../lib/excerpt.js";
 
-const isPoetry = frontmatter.tags?.includes("poems");
+const isPoetry = frontmatter.tags?.includes("poetry");
 
 const description = frontmatter.description ?? excerpt(rawContent());
 ---

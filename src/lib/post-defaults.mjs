@@ -9,7 +9,7 @@ export function postDefaults() {
     if (!path.includes("/src/pages/")) return;
 
     const defaults = { layout };
-    if (path.includes("/src/pages/poetry/")) defaults.tags = ["poems"];
+    if (path.includes("/src/pages/poetry/")) defaults.tags = ["poetry"];
 
     file.data.astro.frontmatter = { ...defaults, ...file.data.astro.frontmatter };
   };

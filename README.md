@@ -10,4 +10,4 @@ npm run new note "title" [tags...]
 ```
 
 creates the file with today's date and opens it in `$EDITOR`. layout (and the
-`poems` tag under `poetry/`) is filled in by `src/lib/post-defaults.mjs`.
+`poetry` tag under `poetry/`) is filled in by `src/lib/post-defaults.mjs`.

@@ -2,26 +2,40 @@
 interface Props {
   items: string[];
   defaultIndex?: number;
+  divideBefore?: number;
   syncHash?: boolean;
 }
 
-const { items, defaultIndex = 0, syncHash = false } = Astro.props;
+const {
+  items,
+  defaultIndex = 0,
+  divideBefore = -1,
+  syncHash = false,
+} = Astro.props;
 ---
 
 <div class="flex flex-wrap gap-3 mb-6">
   {
     items.map((item, index) => (
-      <button
-        class={`tab-btn text-sm md:text-base px-4 py-2 rounded border hover:text-white hover:border-white transition-all duration-300 ${
-          index === defaultIndex
-            ? "border-white text-white"
-            : "border-slate-600 text-slate-400"
-        }`}
-        data-index={index}
-        data-tab={item}
-      >
-        {item}
-      </button>
+      <>
+        {index === divideBefore && (
+          <span
+            aria-hidden="true"
+            class="self-center w-[5px] h-[5px] mx-1 bg-slate-400 rounded-full"
+          />
+        )}
+        <button
+          class={`tab-btn text-sm md:text-base px-4 py-2 rounded border hover:text-white hover:border-white transition-all duration-300 ${
+            index === defaultIndex
+              ? "border-white text-white"
+              : "border-slate-600 text-slate-400"
+          }`}
+          data-index={index}
+          data-tab={item}
+        >
+          {item}
+        </button>
+      </>
     ))
   }
 </div>
