@@ -32,11 +32,12 @@ nonArchivedPosts.forEach((post: any) => {
 
 const tags = ["all", ...Array.from(allTags).sort()];
 
-const defaultTag = "computing";
-const defaultIndex = tags.indexOf(defaultTag) === -1 ? 0 : tags.indexOf(defaultTag);
+const defaultIndex = 0;
 
 const postsByTag: Record<string, any[]> = {
-  all: nonArchivedPosts,
+  all: nonArchivedPosts.filter(
+    (post: any) => !post.frontmatter.tags?.includes("poems")
+  ),
 };
 
 allTags.forEach((tag) => {
