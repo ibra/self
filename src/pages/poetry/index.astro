@@ -1,0 +1,48 @@
+---
+import Nav from "@components/Nav.astro";
+import Layout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+import CompactListItem from "@components/CompactListItem.astro";
+import Heading from "@components/Heading.astro";
+
+const posts = (await Astro.glob("./**/*.md"))
+  .filter((post: any) => !post.frontmatter.archive)
+  .sort(
+    (a: any, b: any) =>
+      (new Date(b.frontmatter.date) as any) -
+      (new Date(a.frontmatter.date) as any)
+  );
+---
+
+<Layout title="ibrahim hisham ~ poetry">
+  <Container>
+    <Nav />
+    <Heading title="poetry" styling="stagger-50" />
+    <p class="stagger-100 animate-fade text-lg mb-5">
+      select pieces from the void.
+    </p>
+
+    <ul class="list-none text-base">
+      {
+        posts.map((post: any) => (
+          <CompactListItem
+            url={post.url}
+            title={post.frontmatter.title}
+            date={new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+            type="poetry"
+          />
+        ))
+      }
+    </ul>
+
+    <p class="text-sm mt-8 animate-fade stagger-300">
+      rss: <a href="/rss-poetry.xml" class="text-slate-200 hover:text-slate-400"
+        >poetry</a
+      >
+    </p>
+  </Container>
+</Layout>

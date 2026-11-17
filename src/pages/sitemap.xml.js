@@ -1,4 +1,4 @@
-const pages = ["/", "/work", "/notes", "/self"];
+const pages = ["/", "/work", "/notes", "/poetry", "/self"];
 
 export async function get(context) {
   const posts = {

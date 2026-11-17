@@ -7,13 +7,7 @@ import Heading from "@components/Heading.astro";
 import TabPanels from "@components/TabPanels.astro";
 import TabPanel from "@components/TabPanel.astro";
 
-const notePosts = await Astro.glob("./**/*.md");
-const poetryPosts = await Astro.glob("../poetry/**/*.md");
-
-const allPosts = [...notePosts, ...poetryPosts].map((post) => ({
-  ...post,
-  type: post.url?.includes("/poetry/") ? "poetry" : "note",
-}));
+const allPosts = await Astro.glob("./**/*.md");
 
 const sortedPosts = allPosts.sort(
   (a: any, b: any) =>
@@ -30,21 +24,12 @@ nonArchivedPosts.forEach((post: any) => {
   }
 });
 
-// poetry is kept apart: it sits last, behind a divider, and isn't counted in "all".
-const tags = [
-  "all",
-  ...Array.from(allTags)
-    .filter((tag) => tag !== "poetry")
-    .sort(),
-  ...(allTags.has("poetry") ? ["poetry"] : []),
-];
+const tags = ["all", ...Array.from(allTags).sort()];
 
 const defaultIndex = 0;
 
 const postsByTag: Record<string, any[]> = {
-  all: nonArchivedPosts.filter(
-    (post: any) => !post.frontmatter.tags?.includes("poetry")
-  ),
+  all: nonArchivedPosts,
 };
 
 allTags.forEach((tag) => {
@@ -62,12 +47,7 @@ allTags.forEach((tag) => {
       some blips from the void.
     </p>
 
-    <TabPanels
-      items={tags}
-      defaultIndex={defaultIndex}
-      divideBefore={tags.indexOf("poetry")}
-      syncHash
-    >
+    <TabPanels items={tags} defaultIndex={defaultIndex} syncHash>
       {
         tags.map((tag, index) => (
           <TabPanel active={index === defaultIndex}>
@@ -84,7 +64,6 @@ allTags.forEach((tag) => {
                       day: "numeric",
                     }
                   )}
-                  type={post.type}
                 />
               ))}
             </ul>
@@ -96,9 +75,6 @@ allTags.forEach((tag) => {
     <p class="text-sm mt-8 animate-fade stagger-300">
       rss: <a href="/rss-notes.xml" class="text-slate-200 hover:text-slate-400"
         >notes</a
-      > <span class="text-slate-600">·</span> <a
-        href="/rss-poetry.xml"
-        class="text-slate-200 hover:text-slate-400">poetry</a
       >
     </p>
   </Container>
